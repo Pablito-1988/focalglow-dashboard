@@ -1,8 +1,12 @@
 import './style-Body.css'
+import TopInfoBox  from '../TopInfoBoxes/TopInfoBoxes'
 
 function Body(params) {
     return (
-        <h4>Soy el body</h4>
+        <>
+        <TopInfoBox/>
+        
+        </>
     )
 }
 

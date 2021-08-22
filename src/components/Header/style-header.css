@@ -1,3 +1,22 @@
-h2{
-    font-size: 20px;
+.headerWrapper{
+    display: flex;
+    width: 100%;
+    background-color: black;
+    height: 120px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.logoFocalGlow img{
+    width: 60%;
+}
+.pageLinks ul {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
+.pageLinks ul li {
+    list-style: none;
+    color: white; 
+    font-size: 25px; 
 }

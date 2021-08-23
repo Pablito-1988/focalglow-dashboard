@@ -1,0 +1,6 @@
+.leftSideInfo{
+    display: flex;
+    width: 45%;
+    
+    flex-direction: column;
+}

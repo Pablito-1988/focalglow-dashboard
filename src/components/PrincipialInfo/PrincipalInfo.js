@@ -1,15 +1,14 @@
 import LeftSideInfo from "./LeftSideInfo/letfSideInfo"
 import RightSideInfo from './RigthSideInfo/RigthSideInfo'
-
+import './style-principalInfo.css'
 
 function PrincipialInfo(params) {
     return(
         <>
-            <main className='mainInfo'>
+            <section className='mainInfo'>
                 <LeftSideInfo/>
                 <RightSideInfo />
-
-            </main>
+            </section>
         </>
     )   
 }

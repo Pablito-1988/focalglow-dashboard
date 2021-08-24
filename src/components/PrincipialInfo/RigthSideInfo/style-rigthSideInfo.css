@@ -1,0 +1,42 @@
+.rigthSideInfo{
+    width: 45%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.rigthSideTitle{
+    width: 90%;
+    margin-top: 10px;
+    border: 1px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rigthSideCategoryes{
+    width: 90%;
+    
+}
+.categoryList{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+.categoryElement{
+    width: 45%;
+    border: 1px solid red;
+    list-style: none;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './style-bottomInfo.css'
 
 function BottomInfo(params) {
-    const [lastUser, setlastUser] = useState([])
+    const [lastUser, setlastUser] = useState(null)
     useEffect(() => {
         console.log('%cse monto el componente', 'color : green')
         fetch('/api/users/last')
@@ -12,9 +12,7 @@ function BottomInfo(params) {
                     data.users
                 )
             })
-
     }, [])
-    
     return (
         <>
             <section className='bottomInfoWrapper'>
@@ -22,17 +20,21 @@ function BottomInfo(params) {
                     <p>Ultimo usuario agregado</p>
                 </div>
                 <div className='userData'>
-                    <div className='userImage'>
-                       <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay'  />
-                    </div>
-                    <div className='userPersonalData'>
-                        <ul>
-                            <li> Nombre : {lastUser.firstName} {lastUser.lastName}</li>
-                            <li>Email: {lastUser.email}</li>
-                            <li>Id: {lastUser.id}</li>
-                        </ul>
+                    {lastUser &&
+                        <>
+                            <div className='userImage'>
+                                <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
+                            </div>
+                            <div className='userPersonalData'>
+                                <ul>
+                                    <li> Nombre : {lastUser.firstName} {lastUser.lastName}</li>
+                                    <li>Email: {lastUser.email}</li>
+                                    <li>Id: {lastUser.id}</li>
+                                </ul>
 
-                    </div>
+                            </div>
+                        </>
+                    }
                 </div>
             </section>
         </>

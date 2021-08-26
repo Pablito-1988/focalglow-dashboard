@@ -9,7 +9,7 @@ import { Switch , Route } from 'react-router-dom'
 
 function App() {
   return (
-    <body>
+    <>
       <Header />
       <Switch>
         <Route exact path='/'>
@@ -24,7 +24,7 @@ function App() {
         <Route component={Error} />
       </Switch>
       <Footer />
-    </body>
+    </>
   );
 }
 

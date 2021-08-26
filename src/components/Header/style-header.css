@@ -2,13 +2,15 @@
     display: flex;
     width: 100%;
     background-color: black;
-    height: 120px;
+    height: 90px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 .logoFocalGlow img{
-    width: 60%;
+    width: 30%;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 .pageLinks ul {
     display: flex;
@@ -18,5 +20,11 @@
 .pageLinks ul li {
     list-style: none;
     color: white; 
-    font-size: 25px; 
+    font-size: 1rem; 
+    text-decoration: none;
+
+}
+a{
+    text-decoration: none;
+    color: white;
 }

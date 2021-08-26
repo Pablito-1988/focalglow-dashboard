@@ -5,7 +5,7 @@ function BottomInfo(params) {
     const [lastUser, setlastUser] = useState([])
     useEffect(() => {
         console.log('%cse monto el componente', 'color : green')
-        fetch('http://localhost:3000/api/users/last')
+        fetch('/api/users/last')
             .then(response => response.json())
             .then(data => {
                 setlastUser(
@@ -14,24 +14,22 @@ function BottomInfo(params) {
             })
 
     }, [])
-    console.log(lastUser)
+    
     return (
         <>
             <section className='bottomInfoWrapper'>
                 <div className='topInfoTitle'>
-                    <h4>
-                        Último Usuario agregado
-                    </h4>
+                    <p>Ultimo usuario agregado</p>
                 </div>
                 <div className='userData'>
                     <div className='userImage'>
-                        <p>Aca va la imagen</p>
+                       <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay'  />
                     </div>
                     <div className='userPersonalData'>
                         <ul>
-                            <li>{lastUser.firstName} {lastUser.lastName}</li>
-                            <li>{lastUser.email}</li>
-                            <li>{lastUser.id}</li>
+                            <li> Nombre : {lastUser.firstName} {lastUser.lastName}</li>
+                            <li>Email: {lastUser.email}</li>
+                            <li>Id: {lastUser.id}</li>
                         </ul>
 
                     </div>

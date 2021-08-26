@@ -1,6 +1,20 @@
 import './style-rigthSideInfo.css'
+import { useState, useEffect } from 'react'
 
 function RightSideInfo(params) {
+    const [category, setCategory] = useState([])
+    useEffect(() => {
+        console.log('%cse monto el componente', 'color : green')
+        fetch('/api/category')
+            .then(response => response.json())
+            .then(data => {
+                setCategory(
+                    data.data
+                )
+            })
+
+    }, [])
+    
     return (
         <>
             <aside className='rigthSideInfo'>
@@ -9,10 +23,11 @@ function RightSideInfo(params) {
                 </div>
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
-                        <li className='categoryElement'>Pie</li>
-                        <li className='categoryElement'>Mesa</li>
-                        <li className='categoryElement'>Colgante</li>
-                        <li className='categoryElement'>Exterior</li>
+                        {category.map((e, index)=> {
+                            return <li className='categoryElement' key={index}>
+                                {e.name}
+                                </li>
+                        })}
                     </ul>
 
                 </div>

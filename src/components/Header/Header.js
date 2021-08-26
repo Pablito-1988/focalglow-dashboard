@@ -13,9 +13,7 @@ function Header(params) {
                 <nav className='pageLinks'>
                     <ul>
                         <li><Link to='/us'>Nosotros</Link></li>
-                        <li>Hola </li>
-                        <li>Como andas</li>
-                        <li>Bien bien </li>
+                        <li><Link to='/'>Datos</Link></li>   
                     </ul>
                 </nav>
 

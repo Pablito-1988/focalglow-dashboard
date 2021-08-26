@@ -1,3 +1,4 @@
+
 .bottomInfoWrapper{
     display: flex;
     width: 100%;
@@ -24,4 +25,8 @@
 }
 .userPersonalData ul li {
     list-style: none;
+}
+img{
+    width: 50%;
+    margin-top: 10px;
 }

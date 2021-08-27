@@ -19,9 +19,10 @@ function BottomInfo(params) {
                 <div className='topInfoTitle'>
                     <p>Ultimo usuario agregado</p>
                 </div>
-                <div className='userData'>
-                    {lastUser &&
-                        <>
+
+                {lastUser &&
+                    <>
+                        <div className='userData'>
                             <div className='userImage'>
                                 <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
                             </div>
@@ -33,9 +34,10 @@ function BottomInfo(params) {
                                 </ul>
 
                             </div>
-                        </>
-                    }
-                </div>
+                        </div>
+                    </>
+                }
+
             </section>
         </>
     )

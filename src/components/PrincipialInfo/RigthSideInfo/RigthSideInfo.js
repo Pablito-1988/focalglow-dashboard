@@ -9,12 +9,10 @@ function RightSideInfo(params) {
             .then(response => response.json())
             .then(data => {
                 setCategory(
-                    data.data
-                )
+                    data.data                    
+                )              
             })
-
-    }, [])
-    
+    }, [])  
     return (
         <>
             <aside className='rigthSideInfo'>
@@ -29,7 +27,6 @@ function RightSideInfo(params) {
                                 </li>
                         })}
                     </ul>
-
                 </div>
             </aside>
         </>

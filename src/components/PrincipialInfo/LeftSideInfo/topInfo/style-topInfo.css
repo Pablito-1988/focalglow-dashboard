@@ -3,10 +3,12 @@
     width: 100%;
     height: 300px;
     border: 1px solid black;
+    border-radius: 5px;
     justify-content: space-between;
     margin-top: 30px;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
     
 }
 .topInfoTitle{
@@ -21,4 +23,6 @@
 }
 .lastProductData{
     display: flex;
+    width: 100%;
+    justify-content: center;
 }    

@@ -9,6 +9,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto; 
   background-image: url(./fondo2.jpg);
+  box-sizing: border-box;
 }
 
 code {
@@ -16,3 +17,4 @@ code {
     monospace;
   
 }
+

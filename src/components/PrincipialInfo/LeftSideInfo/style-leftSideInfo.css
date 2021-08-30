@@ -1,7 +1,7 @@
 .leftSideInfo{
     display: flex;
     width: 45%;
-    height: 700px;
+    /* height: 700px; */
     gap: 10px;
     flex-direction: column;
 }

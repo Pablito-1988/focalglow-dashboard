@@ -9,6 +9,7 @@
     margin-top: 30px;
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 5px 6px grey;
+    /* height: 500px; */
 }
 .rigthSideTitle{
     width: 90%;
@@ -31,7 +32,8 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20px
+    margin-top: 20px;
+    padding: 0;
 }
 .categoryElement{
     width: 48%;

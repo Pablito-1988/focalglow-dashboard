@@ -1,5 +1,6 @@
 import './style-rigthSideInfo.css'
 import { useState, useEffect } from 'react'
+import QuantityProducts from './quantityProducts'
 
 function RightSideInfo(params) {
     const [category, setCategory] = useState([])
@@ -9,22 +10,27 @@ function RightSideInfo(params) {
             .then(response => response.json())
             .then(data => {
                 setCategory(
-                    data.data                    
-                )              
+                    data.data
+                )
             })
-    }, [])  
+    }, [])
+    
+    
+
     return (
         <>
             <aside className='rigthSideInfo'>
                 <div className='rigthSideTitle'>
-                    <h4>Categorias</h4>
+                    <h4 >Categorias</h4>
                 </div>
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
-                        {category.map((e, index)=> {
-                            return <li className='categoryElement' key={index}>
-                                {e.name}
-                                </li>
+                        {category.map((e, index) => {
+                            return <li  className='categoryElement'  key={index}>
+                               <QuantityProducts
+                                  nombre= {e.name}
+                                    /> 
+                            </li>
                         })}
                     </ul>
                 </div>

@@ -23,7 +23,7 @@
    
 } 
 .infoBox:hover{
-    box-shadow: 10px 2px 2px 1px #ffde59;
+    box-shadow: 10px 10px 2px 1px rgba(255, 222, 89,0.3);
     border: 1px solid #ffde59;
     
 }    

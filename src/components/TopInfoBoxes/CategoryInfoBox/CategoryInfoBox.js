@@ -19,7 +19,7 @@ function CategoryInfoBox(params) {
             <h4>
                 Total de Categorias:  
             </h4>
-            <h4>
+            <h4 className='qtyCategory'>
                 {category}
             </h4>
         </div>

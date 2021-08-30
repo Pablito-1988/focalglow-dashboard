@@ -15,10 +15,10 @@ function UserInfoBox(params) {
     return(
         <div className='infoBox'>
             <h4>
-                Total de Usuarios: 
+                Total de Usuarios:  
             </h4>
-            <h4>
-                {users.users}
+            <h4 className='qtyUser'>
+                 {users.users}
             </h4>
         </div>
     )

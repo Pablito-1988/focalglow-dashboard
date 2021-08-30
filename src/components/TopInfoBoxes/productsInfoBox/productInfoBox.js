@@ -16,7 +16,7 @@ function ProductInfoBox() {
             <h4>
                 Total de Productos:  
             </h4>
-            <h4 >
+            <h4 className='qtyProducts'>
                  {productos.data}
             </h4>
         </div>

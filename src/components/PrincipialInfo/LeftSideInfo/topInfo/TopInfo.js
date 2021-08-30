@@ -29,10 +29,12 @@ function TopInfo(params) {
                         </div>
                         <div className='userPersonalData'>
                             <ul>
+                                <li>Cateogria : {lastProduct.category.name}</li>
                                 <li>Nombre: {lastProduct.name} </li>
                                 <li>Cantidad : {lastProduct.quantity}</li>
                                 <li>Precio : ${lastProduct.price}</li>
                                 <li>ID : {lastProduct.id}</li>
+                                
                             </ul>
 
                         </div>

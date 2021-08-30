@@ -43,3 +43,6 @@
     align-items: center;
     border-radius: 5px;
 }
+.productQty{
+    display: none;
+}

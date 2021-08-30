@@ -1,11 +1,10 @@
 import './style-rigthSideInfo.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import QuantityProducts from './quantityProducts'
 
 function RightSideInfo(params) {
     const [category, setCategory] = useState([])
     useEffect(() => {
-        console.log('%cse monto el componente', 'color : green')
         fetch('/api/category')
             .then(response => response.json())
             .then(data => {
@@ -14,7 +13,14 @@ function RightSideInfo(params) {
                 )
             })
     }, [])
-    
+    const showQty = useRef()
+    console.log(showQty)
+    /* const show=()=>{
+        showQty.current.style.display = 'block'
+    }
+    const hide = () => {
+        showQty.current.style.display = 'none'
+    } */
     
 
     return (
@@ -26,10 +32,11 @@ function RightSideInfo(params) {
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
                         {category.map((e, index) => {
-                            return <li  className='categoryElement'  key={index}>
-                               <QuantityProducts
-                                  nombre= {e.name}
-                                    /> 
+                            return<li className='categoryElement' /* onClick={show} onMouseOut={hide} */ key={index}> {e.name}
+                            
+                                <QuantityProducts ref={showQty} nombre= {e.name} />
+                                  
+                                   
                             </li>
                         })}
                     </ul>

@@ -8,6 +8,7 @@
     margin-bottom: 30px;
     margin-top: 30px;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 6px grey;
 }
 .rigthSideTitle{
     width: 90%;
@@ -17,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 
 }
 
@@ -33,7 +35,9 @@
 }
 .categoryElement{
     width: 48%;
-    border: 1px solid red;
+    color: white;
+    background-color: black;
+    
     list-style: none;
     height: 60px;
     margin-top: 5px;
@@ -45,4 +49,8 @@
 }
 .productQty{
     display: none;
+}
+.categoryElement:hover{
+    box-shadow: 5px 5px #ffde59;
+    color: #ffde59
 }

@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 6px grey;
 }
 
 .userData{
@@ -24,6 +25,9 @@
 
 .userPersonalData{
     width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     
 }
 .userPersonalData ul li {
@@ -35,4 +39,5 @@ img{
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 20px;
+    border-radius: 5px;
 }

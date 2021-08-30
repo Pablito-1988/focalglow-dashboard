@@ -17,7 +17,7 @@ function BottomInfo(params) {
         <>
             <section className='bottomInfoWrapper'>
                 <div className='topInfoTitle'>
-                    <p>Ultimo usuario agregado</p>
+                    <h4>Ultimo usuario agregado</h4>
                 </div>
 
                 {lastUser &&

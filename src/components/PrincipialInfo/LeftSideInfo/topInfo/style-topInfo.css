@@ -9,20 +9,44 @@
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 6px grey;
     
 }
 .topInfoTitle{
     display: flex;
     width: 80%;
-    height: 50px;
+    height: 60px;
     border: 1px solid black;
     align-content: center;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    background-color: white;
 }
 .lastProductData{
     display: flex;
     width: 100%;
     justify-content: center;
+}
+.moreInfoButton{
+    width: 50%;
+    height: 50px;
+    border-radius: 5px;
+    background-color: red;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    border: 1px solid white;
+
+}
+.lastData ul li {
+    list-style: none;
+
+}
+.lastData{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
 }    

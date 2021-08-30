@@ -27,16 +27,15 @@ function TopInfo(params) {
                         <div className='userImage'>
                             <img src={`/img/${lastProduct.images[0].name}`} alt='holay' />
                         </div>
-                        <div className='userPersonalData'>
+                        <div className='lastData'>
                             <ul>
                                 <li>Cateogria : {lastProduct.category.name}</li>
                                 <li>Nombre: {lastProduct.name} </li>
                                 <li>Cantidad : {lastProduct.quantity}</li>
                                 <li>Precio : ${lastProduct.price}</li>
-                                <li>ID : {lastProduct.id}</li>
-                                
+                                <li>ID : {lastProduct.id}</li>    
                             </ul>
-
+                                <button  className='moreInfoButton'>Ver detalles del producto</button>
                         </div>
                     </div>
                 }

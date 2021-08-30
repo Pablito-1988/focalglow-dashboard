@@ -1,6 +1,7 @@
 import './style-rigthSideInfo.css'
-import { useState, useEffect,useRef } from 'react'
+import { useState, useEffect } from 'react'
 import QuantityProducts from './quantityProducts'
+/* import { Link } from 'react-router-dom' */
 
 function RightSideInfo(params) {
     const [category, setCategory] = useState([])
@@ -13,16 +14,6 @@ function RightSideInfo(params) {
                 )
             })
     }, [])
-    const showQty = useRef()
-    console.log(showQty)
-    /* const show=()=>{
-        showQty.current.style.display = 'block'
-    }
-    const hide = () => {
-        showQty.current.style.display = 'none'
-    } */
-    
-
     return (
         <>
             <aside className='rigthSideInfo'>
@@ -32,11 +23,8 @@ function RightSideInfo(params) {
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
                         {category.map((e, index) => {
-                            return<li className='categoryElement' /* onClick={show} onMouseOut={hide} */ key={index}> {e.name}
-                            
-                                <QuantityProducts ref={showQty} nombre= {e.name} />
-                                  
-                                   
+                            return<li className='categoryElement'  key={index}> {e.name}                            
+                                <QuantityProducts  nombre= {e.name} />                                  
                             </li>
                         })}
                     </ul>

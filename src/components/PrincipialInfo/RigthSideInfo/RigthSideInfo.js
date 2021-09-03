@@ -1,5 +1,5 @@
 import './style-rigthSideInfo.css'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import QuantityProducts from './quantityProducts'
 /* import { Link } from 'react-router-dom' */
 

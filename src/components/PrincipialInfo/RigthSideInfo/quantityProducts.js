@@ -23,7 +23,7 @@ function QuantityProducts(props) {
 
     return (
         <>
-            <p> : {qty} productos</p>
+            <p className='qtyProduct'> : {qty} productos</p>
         </>
     )
 }

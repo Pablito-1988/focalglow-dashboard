@@ -1,5 +1,5 @@
 import './style-rigthSideInfo.css'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import QuantityProducts from './quantityProducts'
 /* import { Link } from 'react-router-dom' */
 
@@ -14,6 +14,13 @@ function RightSideInfo(params) {
                 )
             })
     }, [])
+    
+   
+    
+    const showInfo = ()=>{
+       
+    }
+    
     return (
         <>
             <aside className='rigthSideInfo'>
@@ -23,7 +30,7 @@ function RightSideInfo(params) {
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
                         {category.map((e, index) => {
-                            return<li className='categoryElement'  key={index}> {e.name}                            
+                            return<li className='categoryElement' onMouseOver={showInfo}  key={index}> {e.name}                            
                                 <QuantityProducts  nombre= {e.name} />                                  
                             </li>
                         })}

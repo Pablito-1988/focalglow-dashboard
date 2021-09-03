@@ -57,3 +57,12 @@
     box-shadow: 5px 5px #ffde59;
     color: #ffde59
 }
+.qtyProduct{
+    display: none;
+}
+
+.categoryElement:hover .qtyProduct {
+    display: block;
+    color: white;
+}
+

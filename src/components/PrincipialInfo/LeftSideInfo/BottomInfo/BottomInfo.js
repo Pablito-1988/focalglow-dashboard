@@ -13,6 +13,7 @@ function BottomInfo(params) {
                 )
             })
     }, [])
+    
     return (
         <>
             <section className='bottomInfoWrapper'>
@@ -24,7 +25,7 @@ function BottomInfo(params) {
                     <>
                         <div className='userData'>
                             <div className='userImage'>
-                                <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
+                            <img className='image'  src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
                             </div>
                             <div className='userPersonalData'>
                                 <ul>

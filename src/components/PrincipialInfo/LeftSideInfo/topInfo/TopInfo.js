@@ -25,7 +25,7 @@ function TopInfo(params) {
                 {lastProduct &&
                     <div className='lastProductData'>
                         <div className='userImage'>
-                            <img src={`/img/${lastProduct.images[0].name}`} alt='holay' />
+                            <img className='productImage'  src={`/img/${lastProduct.images[0].name}`} alt='holay' />
                         </div>
                         <div className='lastData'>
                             <ul>

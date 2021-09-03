@@ -17,9 +17,6 @@ function RightSideInfo(params) {
     
    
     
-    const showInfo = ()=>{
-       
-    }
     
     return (
         <>
@@ -30,7 +27,7 @@ function RightSideInfo(params) {
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
                         {category.map((e, index) => {
-                            return<li className='categoryElement' onMouseOver={showInfo}  key={index}> {e.name}                            
+                            return<li className='categoryElement'   key={index}> {e.name}                            
                                 <QuantityProducts  nombre= {e.name} />                                  
                             </li>
                         })}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './style-topInfo.css'
+import Modal from '../../Modal/Modal'
 function TopInfo(params) {
     const [lastProduct, setLastProduct] = useState(null)
     useEffect(() => {
@@ -12,6 +13,8 @@ function TopInfo(params) {
                 )
             })
     }, [])
+
+   
     return (
         <>
             <section className='topInfoWrapper'>
@@ -35,12 +38,12 @@ function TopInfo(params) {
                                 <li>Precio : ${lastProduct.price}</li>
                                 <li>ID : {lastProduct.id}</li>    
                             </ul>
-                                <button  className='moreInfoButton'>Ver detalles del producto</button>
+                        <button className='moreInfoButton'><a href="#openModal">Ver detalles del producto</a></button>
                         </div>
                     </div>
                 }
 
-
+                <Modal info={lastProduct}/>
 
             </section>
         </>

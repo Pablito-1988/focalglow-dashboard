@@ -49,9 +49,13 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
 }
 .productQty{
     display: none;
+    
+    
 }
 .categoryElement:hover{
     box-shadow: 5px 5px #ffde59;
@@ -59,6 +63,7 @@
 }
 .qtyProduct{
     display: none;
+    transition: 0.5s;
 }
 
 .categoryElement:hover .qtyProduct {

@@ -1,9 +1,6 @@
 # Getting Started with Create React App
 
 
-
-GONZA RE GATO
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

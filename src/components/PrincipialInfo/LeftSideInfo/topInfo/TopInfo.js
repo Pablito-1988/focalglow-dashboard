@@ -22,7 +22,7 @@ function TopInfo(params) {
         setDisplayProductModal(false)
     }
     
-
+  
     return (
         <>
             <section className='topInfoWrapper'>
@@ -50,8 +50,10 @@ function TopInfo(params) {
                         </div>
                     </div>
                 }
-
-                {displayProductModal && <Modal onClickClose={()=>hideProductModal()} />}
+                
+                {displayProductModal && <Modal onClickClose={()=>hideProductModal()} 
+                                                info={{lastProduct}}
+                                        />}
 
             </section>
         </> 

@@ -2,31 +2,40 @@
 /* import { Link } from 'react-router-dom' */
 import './style-modal.css'
 
-function Modal({ onClickClose }) {
+function Modal(props,{ onClickClose }) {
 
-    
-
+console.log(props)
     return (
         <>
+            {props.info.lastProduct &&
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <button onClick={props.onClickClose} title="Close" class="close">X</button>
+                        <h2 >Detalles del Producto</h2>
+                        <div className='contentWrapper'>
+                            <div className='imageContainer'>           
+                            {props.info.lastProduct.images.map((e, index) => {
+                                return <img key={index} className='productImg' src={`/img/${props.info.lastProduct.images[index].name}`} alt='productImg' />
+                                        })}                               
+                            </div>
+                            <div className='infoContainer'>
+                            <h3>Nombre: {props.info.lastProduct.name}</h3>
+                            <p>Cateogria : {props.info.lastProduct.category.name}</p>
+                            <p>Cantidad : {props.info.lastProduct.quantity}</p>
+                            <p>Precio : ${props.info.lastProduct.price}</p>
+                            <h4>Descripción: </h4><p>{props.info.lastProduct.description}</p>
+                                <h4>Features</h4>
+                            {props.info.lastProduct.features.map((e, index) => {
+                                return <p key={index}>{e.type}: {e.name}</p>
+                                })}
+                            </div>
+                        </div>
 
-            <div id="openModal" class="modalDialog">
-                <div>
-                    <button onClick={onClickClose} title="Close" class="close">X</button>
-                    <h2 >Detalles del Producto</h2>
-                    <div className='contentWrapper'>
-                        <div className='imageContainer'>
-                            <img src='#' alt='productImg'/>
-                        </div>
-                        <div className='infoContainer'>
-                            <p>hola</p>
-                            <p>Puedes hacer un montón de cosas aquí, como alertas o incluso crear un formulario de registro aquí mismo.</p>
-                        </div>
+
+
                     </div>
-
-
-
                 </div>
-            </div>
+            }
         </>
     )
 }

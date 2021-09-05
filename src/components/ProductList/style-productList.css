@@ -1,14 +1,12 @@
-/* table{
-    background-color: white;
-    margin: 20px auto;
-    width: 90%;
-}
- */
 table th {
-    background-color: black;
-    color: white
+  background-color: #ffde59;
+  color: black;
+  height: 60px;
 }
 
+table a {
+  color:black
+}
   
 table {
   background-color: white;
@@ -31,12 +29,6 @@ table tr:hover {
     background-color: #ffde59;
   }
   
-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #ffde59;
-    color: black;
-  }
   
 table .id {
     width: 10px;

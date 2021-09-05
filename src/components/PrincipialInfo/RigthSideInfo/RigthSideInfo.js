@@ -22,9 +22,9 @@ function RightSideInfo(params) {
         <>
             <aside className='rigthSideInfo'>
                 <div className='rigthSideTitle'>
-                    <h4 >Categorías</h4>
+                    <h4>Categorías</h4>
                 </div>
-                <div className='rigthSideCategoryes'>
+                <div className='rigthSideCategories'>
                     <ul className='categoryList'>
                         {category.map((e, index) => {
                             return <li className='categoryElement' key={index}> {e.name}

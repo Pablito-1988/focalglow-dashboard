@@ -15,7 +15,10 @@
 }
 
 .modalDialog > div {
-	width: 400px;
+	display: flex;
+	flex-direction: column;
+	width: 60%;
+	height: 600px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
@@ -28,6 +31,21 @@
 	-moz-transition: opacity 400ms ease-in;
 	transition: opacity 400ms ease-in;
 }
+.contentWrapper{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.imageContainer{
+	width: 50%;
+}
+.infoContainer{
+	width: 50%;
+}
+
+
+
+
 .close {
 	background: #606061;
 	color: #FFFFFF;

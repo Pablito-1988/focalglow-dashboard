@@ -4,7 +4,7 @@ import './style-bottomInfo.css'
 function BottomInfo(params) {
     const [lastUser, setlastUser] = useState(null)
     useEffect(() => {
-        console.log('%cse monto el componente', 'color : green')
+       
         fetch('/api/users/last')
             .then(response => response.json())
             .then(data => {

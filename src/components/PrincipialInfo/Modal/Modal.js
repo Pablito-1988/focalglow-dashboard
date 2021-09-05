@@ -1,15 +1,20 @@
+/* import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom' */
 import './style-modal.css'
 
-function Modal(params) {
+function Modal({onClickClose}) {
+ 
     return (
         <>
             
             <div id="openModal" class="modalDialog">
                 <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <h2>Mi modal</h2>
-                    <p>Este es un ejemplo de modal, creado gracias al poder de CSS3.</p>
+                    <button onClick={onClickClose} title="Close" class="close">X</button>
+                    <h2 >Detalles del Producto</h2>
+                    <p>hola</p>
                     <p>Puedes hacer un montón de cosas aquí, como alertas o incluso crear un formulario de registro aquí mismo.</p>
+                    
+                    
                 </div>
             </div>
         </>

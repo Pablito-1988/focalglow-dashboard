@@ -6,11 +6,13 @@ function ProductList() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
 
-
-
   useEffect(() => {
+    getProducts()
+  }, [])
+
+  function getProducts() {
     fetch('/api/products')
-      .then(response => response.json())
+      .then(result => result.json())
       .then(response => {
         setProducts(
           response.data.products
@@ -22,15 +24,15 @@ function ProductList() {
       .finally(() => {
         setLoading(false);
       });
-  }, [])
-
-
+  }
 
   function deleteProduct(id) {
-    if (window.confirm('Esta acción borrará el producto')) {
+    if (window.confirm(`Esta acción borrará el producto ${id}`)) {
       fetch(`/api/products/${id}`, { method: 'DELETE' })
-        .then(setProducts(products))
-
+        .then(result => result.json())
+        .then(response => {
+          getProducts()
+        })
     }
   }
 

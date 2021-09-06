@@ -1,10 +1,8 @@
-/* import { useEffect, useState } from 'react' */
-/* import { Link } from 'react-router-dom' */
+
+
 import './style-modal.css'
 
 function Modal(props,{ onClickClose }) {
-
-console.log(props)
     return (
         <>
             {props.info.lastProduct &&
@@ -14,9 +12,7 @@ console.log(props)
                         <h2 >Detalles del Producto</h2>
                         <div className='contentWrapper'>
                             <div className='imageContainer'>           
-                            {props.info.lastProduct.images.map((e, index) => {
-                                return <img key={index} className='productImg' src={`/img/${props.info.lastProduct.images[index].name}`} alt='productImg' />
-                                        })}                               
+                              <img  className='productImg' src={`/img/${props.info.lastProduct.images[0].name}`} alt='productImg' />                            
                             </div>
                             <div className='infoContainer'>
                             <h3>Nombre: {props.info.lastProduct.name}</h3>
@@ -28,6 +24,8 @@ console.log(props)
                             {props.info.lastProduct.features.map((e, index) => {
                                 return <p key={index}>{e.type}: {e.name}</p>
                                 })}
+
+                            <button className='buttonToWeb'><a href={`http://localhost:3000/product/detail/${props.info.lastProduct.id}`}>Ver en web</a></button>
                             </div>
                         </div>
 

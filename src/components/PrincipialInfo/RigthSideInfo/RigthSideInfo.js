@@ -29,9 +29,9 @@ function RightSideInfo(params) {
         <>
             <aside className='rigthSideInfo'>
                 <div className='rigthSideTitle'>
-                    <h4 >Categorias</h4>
+                    <h4>Categorías</h4>
                 </div>
-                <div className='rigthSideCategoryes'>
+                <div className='rigthSideCategories'>
                     <ul className='categoryList'>
                         {qtyArray.map((e, index) => {
                             return <li className='categoryElement' key={index}> {categoryKeys[index]}

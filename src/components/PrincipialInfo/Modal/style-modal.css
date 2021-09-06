@@ -45,10 +45,10 @@
 }
 .infoContainer{
 	width: 50%;
-	border: 1px solid grey;
+	border: 3px solid grey;
 	border-radius: 5px;
 	padding-left: 5px;
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 	box-shadow: 5px 6px grey;
 	
 }
@@ -89,6 +89,7 @@
 	background-color: red;
 	border-radius: 5px;
 	transition: 0.6s ease;
+	margin-left: 55%;
 }
 .buttonToWeb a{
 	font-size: 20px;

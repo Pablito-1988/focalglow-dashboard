@@ -29,9 +29,9 @@ function BottomInfo(params) {
                             </div>
                             <div className='userPersonalData'>
                                 <ul>
-                                    <li>Id: {lastUser.id}</li>
-                                    <li> Nombre : {lastUser.firstName} {lastUser.lastName}</li>
-                                    <li>Email: {lastUser.email}</li>
+                                    <li><h4>Id: {lastUser.id}</h4></li>
+                                <li><h4>Nombre: {lastUser.firstName} {lastUser.lastName}</h4> </li>
+                                <li><h4>Email: {lastUser.email}</h4></li>
                                 </ul>
 
                             </div>

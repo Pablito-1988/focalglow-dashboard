@@ -18,9 +18,11 @@ function Modal(props,{ onClickClose }) {
                             <h3>Nombre: {props.info.lastProduct.name}</h3>
                             <p>Cateogria : {props.info.lastProduct.category.name}</p>
                             <p>Cantidad : {props.info.lastProduct.quantity}</p>
-                            <p>Precio : ${props.info.lastProduct.price}</p>
+                            <h4>Precio : ${props.info.lastProduct.price}.00</h4>
                             <h4>Descripción: </h4><p>{props.info.lastProduct.description}</p>
+                            <hr className='separador'/>
                                 <h4>Features</h4>
+                            
                             {props.info.lastProduct.features.map((e, index) => {
                                 return <p key={index}>{e.type}: {e.name}</p>
                                 })}

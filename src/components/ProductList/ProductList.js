@@ -11,7 +11,9 @@ function ProductList() {
   }, [])
 
   function getProducts() {
-    fetch('/api/products')
+    let page = 2
+    let limit = 10
+    fetch(`/api/products/`)
       .then(result => result.json())
       .then(response => {
         setProducts(

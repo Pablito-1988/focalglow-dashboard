@@ -4,7 +4,7 @@ import './style-bottomInfo.css'
 function BottomInfo(params) {
     const [lastUser, setlastUser] = useState(null)
     useEffect(() => {
-        console.log('%cse monto el componente', 'color : green')
+       
         fetch('/api/users/last')
             .then(response => response.json())
             .then(data => {
@@ -13,6 +13,7 @@ function BottomInfo(params) {
                 )
             })
     }, [])
+    
     return (
         <>
             <section className='bottomInfoWrapper'>
@@ -24,13 +25,13 @@ function BottomInfo(params) {
                     <>
                         <div className='userData'>
                             <div className='userImage'>
-                                <img src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
+                            <img className='image'  src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
                             </div>
                             <div className='userPersonalData'>
                                 <ul>
-                                    <li> Nombre : {lastUser.firstName} {lastUser.lastName}</li>
-                                    <li>Email: {lastUser.email}</li>
-                                    <li>Id: {lastUser.id}</li>
+                                    <li><h4>Id: {lastUser.id}</h4></li>
+                                <li><h4>Nombre: {lastUser.firstName} {lastUser.lastName}</h4> </li>
+                                <li><h4>Email: {lastUser.email}</h4></li>
                                 </ul>
 
                             </div>

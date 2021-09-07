@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './style-topInfo.css'
+import Modal from '../../Modal/Modal'
+/* import { Link } from 'react-router-dom' */
 function TopInfo(params) {
     const [lastProduct, setLastProduct] = useState(null)
     useEffect(() => {
@@ -12,6 +14,15 @@ function TopInfo(params) {
                 )
             })
     }, [])
+    const[displayProductModal, setDisplayProductModal] = useState(false)
+    function showProductModal(params) {
+        setDisplayProductModal(true)
+    }
+    function hideProductModal(params) {
+        setDisplayProductModal(false)
+    }
+    
+  
     return (
         <>
             <section className='topInfoWrapper'>
@@ -25,29 +36,27 @@ function TopInfo(params) {
                 {lastProduct &&
                     <div className='lastProductData'>
                         <div className='userImage'>
-                            <img src={`/img/${lastProduct.images[0].name}`} alt='holay' />
+                            <img className='productImage'  src={`/img/${lastProduct.images[0].name}`} alt='holay' />
                         </div>
                         <div className='lastData'>
                             <ul>
-                                <li>Cateogria : {lastProduct.category.name}</li>
-                                <li>Nombre: {lastProduct.name} </li>
-                                <li>Cantidad : {lastProduct.quantity}</li>
-                                <li>Precio : ${lastProduct.price}</li>
-                                <li>ID : {lastProduct.id}</li>
+                                
+                                <li><h3><u>Nombre:</u> {lastProduct.name} </h3></li>
+                            <li><h4><u>Cantidad:</u> {lastProduct.quantity}</h4></li>
+                            <li><h4><u>Precio:</u> ${lastProduct.price}</h4></li>
+                                
                             </ul>
-                            <div class='modals-button'>
-                                <button className='moreInfoButton'>Ver detalles del producto</button>
-                                <button className='moreInfoButton'>Top más vendidos</button>
-                                <button className='moreInfoButton'>Últimos vendidos</button>
-                            </div>
+                        <button onClick={showProductModal} className='moreInfoButton'>Ver detalles del producto</button>
                         </div>
                     </div>
                 }
-
-
+                
+                {displayProductModal && <Modal onClickClose={()=>hideProductModal()} 
+                                                info={{lastProduct}}
+                                        />}
 
             </section>
-        </>
+        </> 
     )
 }
 export default TopInfo

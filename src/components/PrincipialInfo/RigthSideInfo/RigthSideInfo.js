@@ -4,16 +4,27 @@ import QuantityProducts from './quantityProducts'
 /* import { Link } from 'react-router-dom' */
 
 function RightSideInfo(params) {
-    const [category, setCategory] = useState([])
+   
+
+    const [productByCategory, setproductByCategory] = useState([])
     useEffect(() => {
-        fetch('/api/category')
+        fetch('/api/products')
             .then(response => response.json())
             .then(data => {
-                setCategory(
-                    data.data
+                setproductByCategory(
+                    data.data.countByCategory
                 )
             })
     }, [])
+    
+    let qtyArray = Object.values(productByCategory)
+    let categoryKeys = Object.keys(productByCategory)
+    
+
+
+
+    
+
     return (
         <>
             <aside className='rigthSideInfo'>
@@ -22,9 +33,9 @@ function RightSideInfo(params) {
                 </div>
                 <div className='rigthSideCategoryes'>
                     <ul className='categoryList'>
-                        {category.map((e, index) => {
-                            return<li className='categoryElement'  key={index}> {e.name}                            
-                                <QuantityProducts  nombre= {e.name} />                                  
+                        {qtyArray.map((e, index) => {
+                            return <li className='categoryElement' key={index}> {categoryKeys[index]}
+                                {<QuantityProducts qty={e} />}
                             </li>
                         })}
                     </ul>

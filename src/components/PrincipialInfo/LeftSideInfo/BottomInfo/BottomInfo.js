@@ -13,19 +13,19 @@ function BottomInfo(params) {
                 )
             })
     }, [])
-    
+
     return (
         <>
             <section className='bottomInfoWrapper'>
                 <div className='topInfoTitle'>
-                    <h4>Ultimo usuario agregado</h4>
+                    <h4>Último usuario agregado</h4>
                 </div>
 
                 {lastUser &&
                     <>
                         <div className='userData'>
                             <div className='userImage'>
-                            <img className='image'  src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
+                                <img className='image' src={`/img/profile-pictures/${lastUser.profileImg}`} alt='holay' />
                             </div>
                             <div className='userPersonalData'>
                                 <ul>

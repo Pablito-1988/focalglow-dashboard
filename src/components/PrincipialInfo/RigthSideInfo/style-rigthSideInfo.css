@@ -1,30 +1,28 @@
 .rigthSideInfo{
     width: 45%;
-    /* border: 1px solid black; */
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #f2f2f2;
     box-shadow: 5px 6px grey;
     height: 500px;
 }
 .rigthSideTitle{
     width: 100%;
-    border: 1px solid black;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: #ffde59;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
 }
 
-.rigthSideCategoryes{
+.rigthSideCategories{
     width: 90%;
     
 }

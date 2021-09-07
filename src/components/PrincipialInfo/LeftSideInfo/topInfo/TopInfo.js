@@ -33,9 +33,13 @@ function TopInfo(params) {
                                 <li>Nombre: {lastProduct.name} </li>
                                 <li>Cantidad : {lastProduct.quantity}</li>
                                 <li>Precio : ${lastProduct.price}</li>
-                                <li>ID : {lastProduct.id}</li>    
+                                <li>ID : {lastProduct.id}</li>
                             </ul>
-                                <button  className='moreInfoButton'>Ver detalles del producto</button>
+                            <div class='modals-button'>
+                                <button className='moreInfoButton'>Ver detalles del producto</button>
+                                <button className='moreInfoButton'>Top más vendidos</button>
+                                <button className='moreInfoButton'>Últimos vendidos</button>
+                            </div>
                         </div>
                     </div>
                 }

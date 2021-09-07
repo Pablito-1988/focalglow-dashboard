@@ -52,4 +52,9 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-}    
+}
+.modals-button{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

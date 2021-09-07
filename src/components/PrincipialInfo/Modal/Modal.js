@@ -22,11 +22,11 @@ function Modal(props,{ onClickClose }) {
                             <h4>Descripción: </h4><p>{props.info.lastProduct.description}</p>
                             <hr className='separador'/>
                                 <h4>Features</h4>
-                            
+                            <div className='feateuresWrapper'>
                             {props.info.lastProduct.features.map((e, index) => {
                                 return <p key={index}>{e.type}: {e.name}</p>
                                 })}
-
+                            </div>
                             <button className='buttonToWeb'><a href={`http://localhost:3000/product/detail/${props.info.lastProduct.id}`}>Ver en web</a></button>
                             </div>
                         </div>

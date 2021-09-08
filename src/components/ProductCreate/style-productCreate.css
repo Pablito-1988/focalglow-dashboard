@@ -115,4 +115,23 @@ h4{
     width: 40%;
 }
 
+.powerWrapper{
+    display: flex;
+}
+.powerInfo{
+        margin-left: 5px;
+    border: 1px solid black;
+    height: 30px;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: white;
+    display: none;
+    transition: 5s;
+
+}
+
+.powerWrapper:hover .powerInfo{
+    display: block;
+}
 

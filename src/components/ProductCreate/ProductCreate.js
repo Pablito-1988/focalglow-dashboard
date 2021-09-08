@@ -77,22 +77,24 @@ function ProductCreate(params) {
                         <textarea type='text' />
                         {/* <hr className='separador' /> */}
                         <h2 className='featuresTitle'>Features</h2>
+                        <div className='powerWrapper'>
+                            <label className='title'>Power</label>
+                            <select className='powerSelect' multiple>
+                                {power.map((e, index) => {
+                                    return <>
+                                        <option key={e.name + index} type="checkbox" id={e.name} value={e.id} name={e.name} >{e.name}</option>
 
-                        <label className='title'>Power</label>
-                        <select className='powerSelect' multiple>
-                            {power.map((e, index) => {
-                                return <>
-                                    <option key={e.name + index} type="checkbox" id={e.name} value={e.id} name={e.name} >{e.name}</option>
-
-                                </>
-                            })}
-                        </select>
+                                    </>
+                                })}
+                            </select>
+                            <p className='powerInfo'>Recorda que apretando CTRL podrás seleccionar más de una potencia</p>
+                        </div>
                         <fieldset className='fuente'>
                             <legend className='title'>Fuente</legend>
                             {source.map((e, index) => {
                                 return <>
 
-                                    <input key={e.name + index} class='radio'type="radio" id={e.name} value={e.id} name={e.name} />
+                                    <input key={e.name + index} class='radio' type="radio" id={e.name} value={e.id} name={e.name} />
                                     <label  >{e.name}</label><br />
                                 </>
                             })}
@@ -136,29 +138,30 @@ function ProductCreate(params) {
                         </fieldset>
 
                     </div>
+                    {/* <hr className='separador' /> */}
                     <div class="form_right">
-                            <h2>Imagenes y archivos del producto</h2>
+                        <h2>Imagenes y archivos del producto</h2>
                         <fieldset className='imageFieldset'>
                             <legend>Imagen principal</legend>
                             <ImageInput />
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Dimenciones del producto</legend>
-                            <ImageInput/>
+                            <ImageInput />
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Slider</legend>
-                            <input multiple type='file' />
+                            <input className='iamgeInput' multiple type='file' />
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Hoja tecnica</legend>
-                            <input type='file' />
+                            <input className='iamgeInput' type='file' />
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Manual de instalación</legend>
-                            <input type='file' />
+                            <input className='iamgeInput' type='file' />
                         </fieldset>
-                        
+
 
                     </div>
 

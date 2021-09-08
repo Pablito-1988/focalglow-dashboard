@@ -1,7 +1,8 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
+import imageDefault from'./default-img.JPG'
 
 function ImageInput(params) {
-    const[image,setImage] = useState('')
+    const [image, setImage] = useState(imageDefault)
 
     let imageHandler = (e) =>{
         const reader = new FileReader();
@@ -18,7 +19,7 @@ function ImageInput(params) {
         <>
             <input type='file'  onChange={imageHandler}/>
             <h4>Preview:</h4>
-            <img className='imagePreview' src={image} />
+            <img className='imagePreview' src={image} alt='ImageFromForm' />
         </>
     )
     

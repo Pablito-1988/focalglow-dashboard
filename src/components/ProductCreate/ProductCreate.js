@@ -148,7 +148,7 @@ function ProductCreate(params) {
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Slider</legend>
-                            <input type='file' />
+                            <input multiple type='file' />
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Hoja tecnica</legend>

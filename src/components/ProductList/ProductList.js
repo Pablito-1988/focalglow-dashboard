@@ -50,10 +50,9 @@ function ProductList() {
       .then(result => result.json())
       .then(response => {
         setProductDetail(response)
-        showProductModal()
       })
 
-
+    showProductModal()
   }
 
   function showProductModal() {
@@ -102,7 +101,7 @@ function ProductList() {
 
           return (
             <tr key={index}>
-              <td>{element.id}</td>
+              <td className="center">{element.id}</td>
               <td className="center">{element.category.name}</td>
               <td>{element.name}</td>
               <td>${toThousand(element.price)}</td>

@@ -30,7 +30,7 @@ function TopInfo(params) {
             <section className='topInfoWrapper'>
                 <div className='topInfoTitle'>
                     <h4>
-                        Último prodúcto agregado
+                        Último producto agregado
                     </h4>
                 </div>
 

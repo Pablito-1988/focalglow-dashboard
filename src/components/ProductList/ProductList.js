@@ -8,6 +8,9 @@ function ProductList() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [displayProductModal, setDisplayProductModal] = useState(false)
+  const [productDetail, setProductDetail] = useState({})
+
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     getProducts()
@@ -15,11 +18,13 @@ function ProductList() {
 
   function getProducts() {
 
-    fetch(`/api/products/`)
+    const limit = 10
+
+    fetch(`/api/products/page/${page}/limit/${limit}`)
       .then(result => result.json())
       .then(response => {
         setProducts(
-          response.data.products
+          response.data
         )
       })
       .catch((err) => {
@@ -40,10 +45,22 @@ function ProductList() {
     }
   }
 
-  function showProductModal(params) {
+  function showProductDetail(id) {
+    fetch(`/api/products/${id}`)
+      .then(result => result.json())
+      .then(response => {
+        setProductDetail(response)
+        showProductModal()
+      })
+
+
+  }
+
+  function showProductModal() {
+
     setDisplayProductModal(true)
   }
-  function hideProductModal(params) {
+  function hideProductModal() {
     setDisplayProductModal(false)
   }
 
@@ -63,7 +80,7 @@ function ProductList() {
   )
 
   const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-
+  console.log(productDetail)
   return (
 
     <section className="tableContainer">
@@ -82,7 +99,7 @@ function ProductList() {
         </tr>
 
         {loading ? load : products.map((element, index) => {
-          let lastProduct = element
+
           return (
             <tr key={index}>
               <td>{element.id}</td>
@@ -92,7 +109,7 @@ function ProductList() {
               <td className="center">{element.quantity}</td>
               <td className="center"><img alt="product" width="80px" src={`/img/${element.images[0].name}`} /></td>
               <td className="center">
-                <button onClick={showProductModal} className="search"><i className="fas fa-search"></i></button>
+                <button onClick={() => showProductDetail(element.id)} className="search"><i className="fas fa-search"></i></button>
               </td>
               <td className="center">
                 <Link to={{ pathname: `http://localhost:3000/product/${element.id}/edit` }} target="_blank" >
@@ -104,9 +121,7 @@ function ProductList() {
                 <button onClick={() => deleteProduct(element.id)} variant="danger" className="trash" type="submit"><i class="far fa-trash-alt"></i></button>
               </td>
 
-              {displayProductModal && <Modal onClickClose={() => hideProductModal()}
-                info={{ lastProduct }}
-              />}
+
             </tr>
 
           )
@@ -114,6 +129,9 @@ function ProductList() {
         }
 
       </table>
+      {displayProductModal && <Modal onClickClose={() => hideProductModal()}
+        info={productDetail}
+      />}
     </section>
   )
 }

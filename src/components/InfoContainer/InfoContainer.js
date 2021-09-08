@@ -7,6 +7,7 @@ export default function InfoContainer() {
     const [mostSold, setMostSold] = useState([])
     const [columns, setColumns] = useState([])
     const [lastSold, setLastSold] = useState([])
+    const [modalInfo, setModalInfo]  = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/api/checkout/listBySold/1/limit/5')
@@ -23,10 +24,12 @@ export default function InfoContainer() {
 
     function showProductModalMost() {
         setColumns(Object.keys(mostSold[0]))
+        setModalInfo(mostSold)
         setProductModal(true)
     }
     function showProductModalLast() {
         setColumns(Object.keys(lastSold[0]))
+        setModalInfo(lastSold)
         setProductModal(true)
     }
 
@@ -41,9 +44,9 @@ export default function InfoContainer() {
             <button onClick={showProductModalMost}>Más Vendidos</button>
             <button onClick={showProductModalLast}>Últimos Vendidos</button>
             {productModal &&
-                <ProductModal 
-                onClickClose={() => hideProductModal()}
-                    columns={columns} products={mostSold} />}
+                <ProductModal
+                    onClickClose={() => hideProductModal()}
+                    columns={columns} products={modalInfo} />}
         </div>)
 
 }

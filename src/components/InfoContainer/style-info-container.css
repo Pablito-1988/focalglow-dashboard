@@ -1,0 +1,13 @@
+.product-info-button{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.product-info-button button{
+    margin: 10px;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: row;
+}

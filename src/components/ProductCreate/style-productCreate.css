@@ -33,6 +33,13 @@ form{
 .title{
     font-size: 20px;
     font-weight: bold;
+    transition: 0.5s;
+    cursor: pointer;
+    
+}
+
+.title:hover{
+    color: #ffde59;
 }
 .powerSelect{
         height: 109px;
@@ -61,7 +68,7 @@ h4{
 
 .number{
     width: 20%;
-    height: 20px;
+    height: 30px;
     margin-bottom: 20px;
 }
 .labelName{
@@ -103,14 +110,7 @@ h4{
     align-items: flex-start;
     flex-direction: column;   
 }
-.Bluetooth:hover i{
-    color: blue;
-    background-color: white;
-    font-size: 18px;
-    border-radius: 90%;
-    
-    
-}
+
 .imagePreview{
     width: 40%;
 }
@@ -133,5 +133,21 @@ h4{
 
 .powerWrapper:hover .powerInfo{
     display: block;
+    border: 1px solid red;
+}
+.finish{
+    width: 50%;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    transition: 0.5s;
 }
 
+.finish:hover{
+    background-color: #ffde59;
+    border: 1px solid green;
+    color: black;
+    box-shadow: 10px 5px 2px 2px black;
+    
+}

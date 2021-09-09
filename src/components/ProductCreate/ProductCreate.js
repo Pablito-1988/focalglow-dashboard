@@ -67,18 +67,19 @@ function ProductCreate(params) {
                                 return <option key={e.name + index} value={e.id}>{e.name}</option>
                             })}
                         </select>
-                        <label className='labelName'>Nombre del Producto:</label>
+                        <label  className='labelName'>Nombre del Producto:</label>
                         <input type='text' className='productName' />
                         <label className='labelName'>Cantidad:</label>
                         <input type='number' className='number' min='0' />
                         <label>Precio unitario base:</label>
-                        <input type='number' className='number' min='0' />
+                        <input type='number' className='number' min='0' placeholder='$' />
                         <label>Descripción del producto: </label>
-                        <textarea type='text' />
+                        <textarea type='text' placeholder="Poné una descripción copada" />
                         {/* <hr className='separador' /> */}
                         <h2 className='featuresTitle'>Features</h2>
                         <div className='powerWrapper'>
                             <label className='title'>Power</label>
+
                             <select className='powerSelect' multiple>
                                 {power.map((e, index) => {
                                     return <>
@@ -87,17 +88,20 @@ function ProductCreate(params) {
                                     </>
                                 })}
                             </select>
-                            <p className='powerInfo'>Recorda que apretando CTRL podrás seleccionar más de una potencia</p>
+                            <p className='powerInfo'>Recordá que apretando CTRL podrás seleccionar más de una potencia</p>
                         </div>
                         <fieldset className='fuente'>
                             <legend className='title'>Fuente</legend>
-                            {source.map((e, index) => {
-                                return <>
 
-                                    <input key={e.name + index} class='radio' type="radio" id={e.name} value={e.id} name={e.name} />
-                                    <label  >{e.name}</label><br />
-                                </>
+                            {source.map((e, index) => {
+                                return (
+                                    <div>
+                                        <input key={e.name + index} class='radio' type="radio" id={e.name} value={e.id} name={e.name} />
+                                        <label  >{e.name}</label>
+                                    </div>
+                                )
                             })}
+
                         </fieldset>
                         <fieldset className='fieldset'>
                             <legend className='title'>Material</legend>
@@ -162,12 +166,13 @@ function ProductCreate(params) {
                             <input className='iamgeInput' type='file' />
                         </fieldset>
 
-
+                            <button className='finish'type='submit'>Finalizar Creación</button>    
                     </div>
-
+                        
                 </form>
-
+                    
             </div>
+            
         </>
 
     )

@@ -26,7 +26,7 @@ function ImageAndFiles(params) {
                 <input className='iamgeInput' type='file' />
             </fieldset>
 
-            <button className='finish' type='submit'>Finalizar Creación</button>
+            <button className='finish' type='submit'>Finalizar creación de producto</button>
         </>
     )
 

@@ -108,7 +108,8 @@ h4{
     width: 70%;
     /* justify-content: space-evenly; */
     align-items: flex-start;
-    flex-direction: column;   
+    flex-direction: column;
+    transition: 5s;
 }
 
 .imagePreview{
@@ -149,5 +150,37 @@ h4{
     border: 1px solid green;
     color: black;
     box-shadow: 10px 5px 2px 2px black;
+    width: 60%;
+    height: 60px;
+    font-size: 25px;
     
+}
+.sliderInfo{
+    margin-left: 5px;
+    border: 1px solid black;
+    height: 30px;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: white;
+    display: none;
+    transition: 5s;
+}
+.sliderImage{
+        display: flex;
+    grid-gap: 10px;
+    grid-gap: 10px;
+    gap: 10px;
+    padding: 20px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    width: 70%;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    flex-direction: row;
+    transition: 5s;
+}
+.sliderImage:hover .sliderInfo{
+    display: block;
+    border: 1px solid red;
 }

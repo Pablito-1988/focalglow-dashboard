@@ -153,9 +153,10 @@ function ProductCreate(params) {
                             <legend>Dimenciones del producto</legend>
                             <ImageInput />
                         </fieldset>
-                        <fieldset className='imageFieldset'>
+                        <fieldset className='sliderImage'>
                             <legend>Slider</legend>
-                            <input className='iamgeInput' multiple type='file' />
+                            <input className='iamgeInput ' id='slider' multiple type='file' />
+                            <p className='sliderInfo'>Apretando CTRL podrás seleccionar más de una imagen</p>
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Hoja tecnica</legend>

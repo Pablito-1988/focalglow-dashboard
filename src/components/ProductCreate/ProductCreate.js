@@ -72,6 +72,7 @@ function ProductCreate(params) {
          <div className='formContainer'>
             <form>
                <div className='form_left'>
+                  
                   <h2>Detalles y Features del producto</h2>
                   <label className='labelName'>Categoria</label>
                   <select>
@@ -153,8 +154,8 @@ function ProductCreate(params) {
                      })}
                   </fieldset>
                   <div ref={button} className='nextButton'>
-                     <div className='buttonContainer'>
-                        <h3 onClick={showImageInputs} >Siguiente paso</h3>
+                     <div onClick={showImageInputs} className='buttonContainer'>
+                        <h3  >Siguiente paso</h3>
                      </div>
                   </div>
                </div>

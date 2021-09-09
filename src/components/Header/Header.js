@@ -18,7 +18,7 @@ function Header(params) {
                             <div class="dropdown-content">
                                 <Link to='/us'>Ventas</Link>
                                 <Link to='/create'>Creación de Prod.</Link>
-                                <Link to='/us'>Edición de Prod.</Link>
+                                <Link to='/edit'>Edición de Prod.</Link>
                             </div>
                         </div>
                         <li><Link to='/us'>Nosotros</Link></li>

@@ -6,6 +6,7 @@ import Main from './components/Main/Main'
 import Error from './components/Error404/Error404'
 import Us from './components/Us/Us'
 import ProductCreate from './components/ProductCreate/ProductCreate'
+import ProductEdit from './components/ProductEdit/ProductEdit';
 import { Switch , Route } from 'react-router-dom'
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
         <Route exact path='/create'>
           {<ProductCreate />}
         </Route>
-        <Route exact path='/products'>
-          {<Error />}
+        <Route exact path='/edit'>
+          {<ProductEdit />}
         </Route>
         <Route component={Error} />
       </Switch>

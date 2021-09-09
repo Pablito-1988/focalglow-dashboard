@@ -72,7 +72,7 @@ function ProductCreate(params) {
          <div className='formContainer'>
             <form>
                <div className='form_left'>
-                  <h2>Detalles y features del producto</h2>
+                  <h2>Detalles y Features del producto</h2>
                   <label className='labelName'>Categoria</label>
                   <select>
                      {category.map((e, index) => {

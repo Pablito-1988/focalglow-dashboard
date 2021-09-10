@@ -19,7 +19,7 @@ function Modal(props, { onClickClose }) {
 								<img className='productImg' src={`${props.info.data.image}`} alt='productImg' />
 							</div>
 							<div className='infoContainer'>
-								<h3>Nombre: {props.info.data.name}</h3>
+								<h4>Nombre: {props.info.data.name}</h4>
 								<p>Cateogria: {props.info.data.category.name}</p>
 								<p>Cantidad: {props.info.data.quantity}</p>
 								<p>Precio base: ${props.info.data.price}</p>

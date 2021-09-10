@@ -84,7 +84,7 @@ function ProductList() {
   return (
 
     <section className="tableContainer">
-      <h4>Listado de Productos</h4>
+      <h3>Listado de Productos</h3>
       <table>
         <tr>
           <th>ID</th>

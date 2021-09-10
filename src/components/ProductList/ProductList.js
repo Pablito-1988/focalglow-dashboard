@@ -11,21 +11,24 @@ function ProductList() {
   const [productDetail, setProductDetail] = useState({})
 
   const [page, setPage] = useState(1)
+  const [prevPage, setPrevPage] = useState(1)
+  const [nextPage, setNextPage] = useState(2)
 
   useEffect(() => {
-    getProducts()
+    getProducts(page)
   }, [])
 
-  function getProducts() {
+  function getProducts(page) {
 
     const limit = 10
 
     fetch(`/api/products/page/${page}/limit/${limit}`)
       .then(result => result.json())
       .then(response => {
-        setProducts(
-          response.data
-        )
+        setProducts(response.data)
+        setPrevPage(page - 1)
+        setNextPage(page + 1)
+        setPage(page + 1)
       })
       .catch((err) => {
         console.log(err);
@@ -63,13 +66,7 @@ function ProductList() {
     setDisplayProductModal(false)
   }
 
-  function prevPage() {
 
-  }
-
-  function nextPage() {
-
-  }
 
   const load = (
     <tr key="-1">
@@ -143,20 +140,20 @@ function ProductList() {
         }
 
       </table>
-      <form action="/product" method="GET">
-        <div className="page">
-          <button onClick={() => prevPage()} className="offset" value="1">
-            <i className="fas fa-arrow-left"></i>
-          </button>
-          <button type="submit" className="offset white" value="1">
-            {page}
-          </button>
-          <button onClick={() => nextPage()} className="offset" value="2">
-            <i className="fas fa-arrow-right"></i>
-          </button>
-        </div>
 
-      </form>
+      <div className="page">
+        <button onClick={() => getProducts(prevPage)} className="offset" value="1">
+          <i className="fas fa-arrow-left"></i>
+        </button>
+        <button type="submit" className="offset white" value="1">
+          {page}
+        </button>
+        <button onClick={() => getProducts(nextPage)} className="offset" value="2">
+          <i className="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+
 
 
 

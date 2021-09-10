@@ -80,6 +80,7 @@ function ProductList() {
 
   const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   console.log(productDetail)
+
   return (
 
     <section className="tableContainer">

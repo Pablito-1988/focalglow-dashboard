@@ -51,7 +51,8 @@
 	padding-right: 5px ;
 	padding-bottom: 10px;
 	box-shadow: 5px 6px grey;
-	
+	height: 60vh;
+	overflow-y: scroll;
 }
 
 .separador{

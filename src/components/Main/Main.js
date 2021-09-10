@@ -9,7 +9,6 @@ function Body(params) {
         <>
             <TopInfoBox />
             <PrincipialInfo />
-            <ProductList />
         </>
     )
 }

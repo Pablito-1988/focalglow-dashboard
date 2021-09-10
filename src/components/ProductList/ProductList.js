@@ -63,6 +63,13 @@ function ProductList() {
     setDisplayProductModal(false)
   }
 
+  function prevPage() {
+
+  }
+
+  function nextPage() {
+
+  }
 
   const load = (
     <tr key="-1">
@@ -84,6 +91,13 @@ function ProductList() {
   return (
 
     <section className="tableContainer">
+      {displayProductModal &&
+        <Modal
+          onClickClose={() => hideProductModal()}
+          info={productDetail}
+        />}
+
+
       <h3>Listado de Productos</h3>
       <table>
         <tr>
@@ -129,9 +143,23 @@ function ProductList() {
         }
 
       </table>
-      {displayProductModal && <Modal onClickClose={() => hideProductModal()}
-        info={productDetail}
-      />}
+      <form action="/product" method="GET">
+        <div className="page">
+          <button onClick={() => prevPage()} className="offset" value="1">
+            <i className="fas fa-arrow-left"></i>
+          </button>
+          <button type="submit" className="offset white" value="1">
+            {page}
+          </button>
+          <button onClick={() => nextPage()} className="offset" value="2">
+            <i className="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </form>
+
+
+
     </section>
   )
 }

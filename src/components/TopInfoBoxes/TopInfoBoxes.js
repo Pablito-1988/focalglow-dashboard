@@ -4,16 +4,16 @@ import InfoBox from './infoBox/infoBox'
 
 
 function TopInfoBox(params) {
-    
+
     //los estados de los fetch 
     const [productos, setProductos] = useState([])
     const [category, setCategory] = useState([])
     const [users, setUsers] = useState([])
     //nombre de la info 
-    const boxName = ['Productos', 'Categorias','Usuarios'] 
-    
+    const boxName = ['Productos', 'Categorias', 'Usuarios']
+
     useEffect(() => {
-       
+
         fetch('http://localhost:3000/api/products/qty')
             .then(response => response.json())
             .then(data => {
@@ -23,18 +23,18 @@ function TopInfoBox(params) {
             })
     }, [])
     useEffect(() => {
-        
+
         fetch('http://localhost:3000/api/category')
             .then(response => response.json())
             .then(data => {
                 setCategory(
-                    data.count.total
+                    data.meta.total
                 )
             })
 
     }, [])
     useEffect(() => {
-        
+
         fetch('http://localhost:3000/api/users/qty')
             .then(response => response.json())
             .then(data => {
@@ -44,17 +44,17 @@ function TopInfoBox(params) {
             })
     }, [])
     //agergo la info de los 3 fetch a un array para pasarselo a la vista en un map 
-    const info = [productos, category, users ]    
-    return(
+    const info = [productos, category, users]
+    return (
         <>
             <section className='infoBoxesContainer'>
-                {boxName.map((e,i)=>{
-                        
-                  return <InfoBox
-                            info= {info[i]}
-                            name= {e}
-                  />
-                })}               
+                {boxName.map((e, i) => {
+
+                    return <InfoBox
+                        info={info[i]}
+                        name={e}
+                    />
+                })}
             </section>
         </>
     )

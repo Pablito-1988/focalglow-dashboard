@@ -30,10 +30,6 @@ function ProductCreate(params) {
          })
    }, [])
 
-
-
-
-
    let cct = []
    features.map(e => {
       return e.type === 'cct' ? cct.push(e) : '';
@@ -59,14 +55,13 @@ function ProductCreate(params) {
       return e.type === 'dim' ? dim.push(e) : '';
    })
 
+   
+   //seteo  un estado para cada imagen que se va a mostrar en la vista
+   const [imageOne, setimageOne] = useState(imageDefault)
+   const [imageTwo, setimageTwo] = useState(imageDefault)
 
-   //seteo  un estado para alamacenar la imagen del imput
-   const [image, setImage] = useState(imageDefault)
-
-
-
-   //creo el evento que va a tener el input
-   let imageHandler = (e) => {
+   //funciones para pasar a la vista las imagenes
+   function imageHandlerOne(e){
       //seteo un nuevo reader que permite acceder a los archivos de los inputs 
       const reader = new FileReader();
       //en la funcion onload se coloca lo que quiero que se haga con la info 
@@ -74,13 +69,25 @@ function ProductCreate(params) {
          //aca si el estado es igual a 2 significa que el FileReader completo la operacion y tiene la informacion 
          if (reader.readyState === 2) {
             //se setea el estado con el resultado del fileReader
-            setImage(reader.result)
-
-
+            setimageOne(reader.result)
          }
       }
       reader.readAsDataURL(e.target.files[0])
    }
+   function imageHandlerTwo(e) {
+      //seteo un nuevo reader que permite acceder a los archivos de los inputs 
+      const reader = new FileReader();
+      //en la funcion onload se coloca lo que quiero que se haga con la info 
+      reader.onload = () => {
+         //aca si el estado es igual a 2 significa que el FileReader completo la operacion y tiene la informacion 
+         if (reader.readyState === 2) {
+            //se setea el estado con el resultado del fileReader
+            setimageTwo(reader.result)
+         }
+      }
+      reader.readAsDataURL(e.target.files[0])
+   }
+  
    //aca manejo de los botones y partes del fomulario a mostrar 
    const step2 = useRef()
    const firstButton = useRef()
@@ -128,6 +135,9 @@ function ProductCreate(params) {
                //valido los campos 
                validate={(values) => {
                   const errors = {}
+                  if (!values.categoryId) {
+                     errors.categoryId = 'Debes agregar una categoria para el producto'
+                  }
                   if (!values.name) {
                      errors.name = 'Debes agregar un nombre para el producto'
                   } else if (values.name.length < 3) {
@@ -174,21 +184,22 @@ function ProductCreate(params) {
                   if (!values.productSize) {
                      errors.productSize = 'Debes agregar una imagen sobre las dimenciones del producto'
                   }
-                  if (!values.slider) {
+                  if (values.slider.length ===0) {
                      errors.slider = 'Debes agregar por lo menos una imagen '
                   }
                   console.log(values)
                   console.log(errors)
                   return errors
                }}
-               onSubmit={(values) => {
+               
+               onSubmit={(values ) => {
                   console.log(values)
-
+                  
                }}
 
             >
                {
-                  ({ handleChange, setFieldValue }) => (
+                  ({ handleChange, setFieldValue}) => (
 
                      <Form >
                         {/* <form onSubmit={handlerSubmit} > */}
@@ -201,6 +212,7 @@ function ProductCreate(params) {
                                  return <option key={e.name + index} value={e.id}>{e.name}</option>
                               })}
                            </select>
+                           <ErrorMessage name='categoryId' className='errors' component='span' />
                            <label className='labelName'>Nombre del Producto:</label>
                            <input
                               type='text'
@@ -260,9 +272,13 @@ function ProductCreate(params) {
                                        </>
                                     })}
                                  </select>
+                                 <div>
                                  <ErrorMessage name='power' className='errors' component='span' />
+                                <p className='powerInfo'>Recordá que apretando CTRL podrás seleccionar más de una potencia</p> 
+                                 </div>
+                                 
                               </div>
-                              <p className='powerInfo'>Recordá que apretando CTRL podrás seleccionar más de una potencia</p>
+                              
                               <fieldset className='fuente'>
                                  <legend className='title'>Fuente</legend>
                                  {source.map((e, index) => {
@@ -361,32 +377,38 @@ function ProductCreate(params) {
                            <h2>Imagenes y archivos del producto</h2>
                            <fieldset className='imageFieldset'>
                               <legend>Imagen principal</legend>
-                              <input type='file' name='mainImg' className='iamgeInput' /* onChange={imageHandler} */ onChange={(event) => {
+                              <input type='file' name='mainImg' className='iamgeInput'  /* onChange={imageHandler} */ onChange={(event) => {
+                                 imageHandlerOne(event)
                                  setFieldValue("mainImg", event.target.files[0]);
                               }}></input>
                               <h4>Preview:</h4>
-                              <img className='imagePreview' src={image} alt='ImageFromForm'></img>
+                              <img className='imagePreview' src={imageOne} alt='ImageFromForm'></img>
                            <ErrorMessage name='mainImg' className='errors' component='span' />   
                            </fieldset>
                            
                            <fieldset className='imageFieldset'>
                               <legend>Dimenciones del producto</legend>
-                              <input type='file' className='iamgeInput' name='productSize' onClick={imageHandler} onChange={(event) => {
+                              <input type='file' className='iamgeInput' name='productSize' /* onKeyPress={imageHandler} */ onChange={(event) => {
+                                 imageHandlerTwo(event)
                                  setFieldValue("productSize", event.target.files[0]);
                               }} ></input>
                               <h4>Preview:</h4>
-                              <img className='imagePreview' src={image} alt='ImageFromForm'></img>
+                              <img className='imagePreview' src={imageTwo} alt='ImageFromForm'></img>
                            <ErrorMessage name='productSize' className='errors' component='span' />   
                            </fieldset>
                            
                            <fieldset className='sliderImage'>
                               <legend>Slider</legend>
                               <input className='iamgeInput ' name='slider' id='slider' multiple type='file' onChange={(event) => {
+                                 
                                  setFieldValue("slider", event.target.files[0]);
                               }}
                               />
                               <p className='sliderInfo'>Apretando CTRL podrás seleccionar más de una imagen</p>
-                            <ErrorMessage name='slider' className='errors' component='span' />  
+                              <div>
+                                <ErrorMessage name='slider' className='errors' component='span' />    
+                              </div>
+                           
                            </fieldset>
                            
                            <fieldset className='imageFieldset'>

@@ -5,8 +5,10 @@ import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import Error from './components/Error404/Error404'
 import Us from './components/Us/Us'
-import { Switch, Route } from 'react-router-dom'
 import ProductList from './components/ProductList/ProductList';
+import ProductCreate from './components/ProductCreate/ProductCreate'
+import ProductEdit from './components/ProductEdit/ProductEdit';
+import { Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
         </Route>
         <Route exact path='/products'>
           {<ProductList />}
+        </Route>
+        <Route exact path='/create'>
+          {<ProductCreate />}
+        </Route>
+        <Route exact path='/edit'>
+          {<ProductEdit />}
         </Route>
         <Route component={Error} />
       </Switch>

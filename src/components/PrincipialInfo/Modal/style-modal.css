@@ -113,3 +113,12 @@
 	background-color: #06B814;
 	
 }
+.feateuresWrapper{
+	display: flex;
+	width: 100%;
+	    flex-wrap: wrap;
+}
+.feateuresWrapper p{
+	
+	width: 48%;
+}

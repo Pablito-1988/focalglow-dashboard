@@ -14,11 +14,20 @@ function ProductList() {
   const [page, setPage] = useState(1)
   const [prevPage, setPrevPage] = useState(1)
   const [nextPage, setNextPage] = useState(2)
-  const [pageQuantity, setPageQuantity] = useState()
+  const [pageQuantity, setPageQuantity] = useState(1)
+
 
   useEffect(() => {
     getProducts(page, limit)
-  }, [limit, page])
+  }, [page])
+
+  useEffect(() => {
+
+    setPage(1)
+  }, [limit])
+
+
+
 
   function getProducts(page, limit) {
 
@@ -28,7 +37,7 @@ function ProductList() {
         setProducts(response.data)
         page - 1 === 0 ? setPrevPage(1) : setPrevPage(page - 1)
         page + 1 > response.meta.pageQuantity ? setNextPage(response.meta.pageQuantity) : setNextPage(page + 1)
-        setPage(page)
+        page > response.meta.pageQuantity ? setPage(response.meta.pageQuantity) : setPage(page)
         setPageQuantity(response.meta.pageQuantity)
       })
       .catch((err) => {
@@ -140,23 +149,26 @@ function ProductList() {
 
 
       </table>
-      <caption>Productos por vista:  <select value={limit} onChange={event => {
-        setLimit(event.target.value)
-      }}>
-        <option value="5"> 5</option>
-        <option value="10"> 10</option>
-        <option value="15"> 15</option>
-        <option value="20"> 20</option>
-      </select></caption>
+      <caption>Productos por vista:
+        <select value={limit} onChange={event => {
+          setLimit(event.target.value)
+
+        }}>
+          <option value="5"> 5</option>
+          <option value="10"> 10</option>
+          <option value="15"> 15</option>
+          <option value="20"> 20</option>
+        </select>
+      </caption>
 
       <div className="page">
-        <button onClick={() => getProducts(prevPage, limit)} className="offset">
+        <button onClick={() => setPage(page - 1)} className="offset">
           <i className="fas fa-arrow-left"></i>
         </button>
         <button type="submit" className="offset white">
           {page}
         </button>
-        <button onClick={() => getProducts(nextPage, limit)} className="offset">
+        <button onClick={() => setPage(page + 1)} className="offset">
           <i className="fas fa-arrow-right"></i>
         </button>
       </div>

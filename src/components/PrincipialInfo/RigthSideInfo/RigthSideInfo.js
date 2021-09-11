@@ -1,6 +1,7 @@
 import './style-rigthSideInfo.css'
 import { useState, useEffect } from 'react'
 import QuantityProducts from './quantityProducts'
+import InfoContainer from '../../InfoContainer/InfoContainer'
 /* import { Link } from 'react-router-dom' */
 
 function RightSideInfo(params) {
@@ -27,7 +28,8 @@ function RightSideInfo(params) {
 
     return (
         <>
-            <aside className='rigthSideInfo'>
+            <aside>
+                <section className='bottomInfoWrapper'>
                 <div className='rigthSideTitle'>
                     <h4>Categorías</h4>
                 </div>
@@ -40,7 +42,16 @@ function RightSideInfo(params) {
                         })}
                     </ul>
                 </div>
+                </section>
+
+                <section className='bottomInfoWrapper'>
+                <div className='rigthSideTitle'>
+                    <h4>Info Productos</h4>
+                </div>
+                <InfoContainer />
+                </section>
             </aside>
+
         </>
     )
 }

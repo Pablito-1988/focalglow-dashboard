@@ -9,6 +9,8 @@ import ProductList from './components/ProductList/ProductList';
 import ProductCreate from './components/ProductCreate/ProductCreate'
 import ProductEdit from './components/ProductEdit/ProductEdit';
 import { Switch, Route } from 'react-router-dom'
+import ProductModal from './components/ProductModal/ProductModal';
+import MostSold from './components/ProductModal/MostSold';
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
         </Route>
         <Route exact path='/products'>
           {<ProductList />}
+        </Route>
+        <Route exact path='/mostSoldProducts'>
+          {<MostSold />}
         </Route>
         <Route exact path='/create'>
           {<ProductCreate />}

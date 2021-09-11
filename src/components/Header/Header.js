@@ -17,7 +17,8 @@ function Header(params) {
                             <li class="dropbtn">Tablas</li>
                             <div class="dropdown-content">
                                 <Link to='/products'>Productos</Link>
-                                <Link to='/us'>Ventas</Link>
+                                <Link to='/mostSoldProducts'>Más Vendidos</Link>
+                                <Link to='/us'>Últimos Vendidos</Link>
                                 <Link to='/create'>Creación de Prod.</Link>
                                 <Link to='/edit'>Edición de Prod.</Link>
                             </div>

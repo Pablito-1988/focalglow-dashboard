@@ -32,14 +32,12 @@ form{
 }
 .form_right{
     width: 45%;
-    display: none;
-    
-    
+    display: none;  
 }
-.separador{
-    width: 90%;
-	border: 1px solid black;
+.form-right{
+    width: 45%;
 }
+
 .title{
     font-size: 20px;
     font-weight: bold;
@@ -71,6 +69,7 @@ textarea{
     height: 80px;
     font-size: 18px;
         width: 75%;
+        resize: none;
 }
 h4{
     margin:0
@@ -141,9 +140,7 @@ h4{
     transition: 5s;
 
 }
-textarea{
-    resize: none;
-}
+
 
 .powerWrapper:hover .powerInfo{
     display: block;
@@ -246,4 +243,10 @@ textarea{
     border: 1px solid black;
     box-shadow: 10px 5px 2px 2px black;
     
+}
+
+.reset{
+    margin-left: 10px;
+    background-color: red;
+    color: white;
 }

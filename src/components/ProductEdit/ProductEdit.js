@@ -144,7 +144,7 @@ function ProductEdit(params) {
                             })}
                         </fieldset>
                     </div>
-                    <div class="form_right">
+                    <div class="form-right">
                         <h2>Imagenes y archivos del producto</h2>
                         <fieldset className='imageFieldset'>
                             <legend>Imagen principal</legend>

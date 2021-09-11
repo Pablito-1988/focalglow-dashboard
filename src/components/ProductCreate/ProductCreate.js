@@ -1,7 +1,5 @@
 import './style-productCreate.css'
 import { useState, useEffect, useRef, /* useRef */ } from 'react'
-/* import ImageAndFiles from './ImageAndFiles' */
-/* import { useForm } from './hook/useForm' */
 import { Formik, Form, ErrorMessage } from 'formik';
 import imageDefault from './default-img.JPG'
 
@@ -105,7 +103,10 @@ function ProductCreate(params) {
       secondButton.current.style.display = 'none'
       step3.current.style.display = 'block'
    }
-
+   function gonza(e) {
+      e.preventDefault()
+      alert('No Gonza aca no hay que tocar, esto borra todo')
+   }
    return (
       <>
          <h1 className='principalTitle'>Creación de producto</h1>
@@ -187,8 +188,7 @@ function ProductCreate(params) {
                   if (values.slider.length ===0) {
                      errors.slider = 'Debes agregar por lo menos una imagen '
                   }
-                  console.log(values)
-                  console.log(errors)
+                  
                   return errors
                }}
                
@@ -376,7 +376,7 @@ function ProductCreate(params) {
                         <div class="form_right" ref={step3}>
                            <h2>Imagenes y archivos del producto</h2>
                            <fieldset className='imageFieldset'>
-                              <legend>Imagen principal</legend>
+                              <legend className='title'>Imagen principal</legend>
                               <input type='file' name='mainImg' className='iamgeInput'  onChange={(event) => {
                                  imageHandlerOne(event)
                                  setFieldValue("mainImg", event.target.files[0]);
@@ -387,7 +387,7 @@ function ProductCreate(params) {
                            </fieldset>
                            
                            <fieldset className='imageFieldset'>
-                              <legend>Dimenciones del producto</legend>
+                              <legend className='title'>Dimenciones del producto</legend>
                               <input type='file' className='iamgeInput' name='productSize'  onChange={(event) => {
                                  imageHandlerTwo(event)
                                  setFieldValue("productSize", event.target.files[0]);
@@ -398,7 +398,7 @@ function ProductCreate(params) {
                            </fieldset>
                            
                            <fieldset className='sliderImage'>
-                              <legend>Slider</legend>
+                              <legend className='title'>Slider</legend>
                               <input className='iamgeInput ' name='slider' id='slider' multiple type='file' onChange={(event) => {
                                  
                                  setFieldValue("slider", event.target.files);
@@ -412,7 +412,7 @@ function ProductCreate(params) {
                            </fieldset>
                            
                            <fieldset className='imageFieldset'>
-                              <legend>Hoja tecnica</legend>
+                              <legend className='title'>Hoja tecnica</legend>
                               <input className='iamgeInput' name='dataSheet' onChange={(event) => {
                                  setFieldValue("dataSheet", event.target.files[0]);
                               }} type='file' />
@@ -420,13 +420,14 @@ function ProductCreate(params) {
                            </fieldset>
                            
                            <fieldset className='imageFieldset'>
-                              <legend>Manual de instalación</legend>
+                              <legend className='title'>Manual de instalación</legend>
                               <input className='iamgeInput' name='installSheet' onChange={(event) => {
                                  setFieldValue("installSheet", event.target.files[0]);
                               }} type='file' />
                            <ErrorMessage name='installSheet' className='errors' component='span' />   
                            </fieldset>
                            <button className='finish' type='submit'>Finalizar creación de producto</button>
+                           <button className='reset' onClick={gonza}>Reset</button>
                         </div>
                      </Form>
                   )}

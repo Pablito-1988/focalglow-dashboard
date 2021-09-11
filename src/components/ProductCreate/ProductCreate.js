@@ -2,6 +2,7 @@ import './style-productCreate.css'
 import { useState, useEffect, useRef } from 'react'
 import ImageAndFiles from './ImageAndFiles'
 import { useForm } from './hook/useForm'
+import { Formik, Field, Form } from 'formik';
 
 function ProductCreate(params) {
    const [category, setCategory] = useState([])
@@ -80,26 +81,7 @@ function ProductCreate(params) {
       //errors es lo que va a devolver la funcion validateForm, que es la que se va a setean en setError 
       let errors = {}
       //agrego trim para evitar los espacios en blanco 
-     
-      switch (form) {
-         case form.name:
-            if (!form.name.trim()) {
-               errors.name = 'Tienes que agregarle un nombre'
-            } else if (form.name.trim().length < 3) {
-               errors.name = 'Tienes que agregarle un nombre mas largo'
-            }
-            break;
-         case form.quantity:
-            if (!form.quantity.trim()) {
-               errors.quantity = 'Tienes que agregar una cantidad'
-            }
-            break;
-      
-         default:
-            break;
-      }
-
-      /* if(!form.name.trim()){
+      if(!form.name.trim()){
          errors.name = 'Tienes que agregarle un nombre'
       }else if(form.name.trim().length < 3){
          errors.name = 'Tienes que agregarle un nombre mas largo'
@@ -114,29 +96,8 @@ function ProductCreate(params) {
          errors.description = 'Tienes que agregarle una descripcion'
        } else if (form.description.trim().length < 20) {
           errors.description = 'Tienes que agregarle una descripcion mas larga'
-       } */
-      /* if (!form.power ) {
-         errors.power = 'Tienes que agregarle una potencia'
-      }
-      if (!form.material) {
-         errors.material = 'Tienes que agregarle un material'
-      }
-      if (!form.source) {
-         errors.source = 'Tienes que agregarle una fuente'
-      }
-      if (!form.optic) {
-         errors.optic = 'Tienes que agregarle una optica'
-      }
-      if (!form.cct) {
-         errors.cct = 'Tienes que agregarle un cct'
-      }
-      if (!form.dim) {
-         errors.dim = 'Tienes que agregarle un dim'
-      } */
-     
-      
-      
-
+       }
+ 
       return errors
    }
    const { form,
@@ -148,9 +109,23 @@ function ProductCreate(params) {
 
    return (
       <>
+      <Formik
+         initialValues={{
+         categoryId: '',
+         name:'',
+         quantity:'',
+         price:'',
+         description:'',
+         } }
+            onSubmit={async (values) => {
+               await new Promise((r) => setTimeout(r, 500));
+               alert(JSON.stringify(values, null, 2));
+            }}
+         >
          <h1 className='principalTitle'>Creación de producto</h1>
          <div className='formContainer'>
-            <form onSubmit={handlerSubmit} >
+               <Form>
+            {/* <form onSubmit={handlerSubmit} > */}
                <div className='form_left'>
                   
                   <h2>Detalles y Features del producto</h2>
@@ -281,8 +256,9 @@ function ProductCreate(params) {
                <div class="form_right">
                   {displayImageInputs && <ImageAndFiles />}
                </div>
-            </form>
+            </Form>
          </div>
+         </Formik>
       </>
    )
 }

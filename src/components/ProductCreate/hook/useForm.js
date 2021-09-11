@@ -19,21 +19,15 @@ export const useForm = (initialForm, validateForm)=>{
         })
     
     }
-    /* const handlerCheck = (e) =>{
-        const { name, value } = e.target
-        setform({
-            ...form
-            [name]: value
-        })
-    } */
+   
         
     //aca se hacen las validaciones
-    const handlerBlur = (e) => {
+    /* const handlerBlur = (e) => {
         
         handlerChange(e);
         setErrors(validateForm(form))
         
-     }
+     } */
 
     //aca se maneja el submit
     const handlerSubmit = (e) => {
@@ -51,7 +45,6 @@ export const useForm = (initialForm, validateForm)=>{
     return{
         form,
         errors,
-        handlerBlur,
         handlerSubmit,
         handlerChange,
         /* handlerCheck, */

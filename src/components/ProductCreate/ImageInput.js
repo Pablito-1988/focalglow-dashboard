@@ -16,6 +16,7 @@ function ImageInput(params) {
                     setImage(reader.result)
             }
         }
+        console.log(e.target.files[0])
         reader.readAsDataURL(e.target.files[0])
     }
 

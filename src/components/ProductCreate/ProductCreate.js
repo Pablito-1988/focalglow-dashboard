@@ -193,7 +193,7 @@ function ProductCreate(params) {
                      <Form >
                         {/* <form onSubmit={handlerSubmit} > */}
                         <div className='form_left'>
-
+                           
                            <h2>Detalles y Features del producto</h2>
                            <label className='labelName'>Categoria</label>
                            <select name="categoryId" onChange={handleChange}>
@@ -237,7 +237,7 @@ function ProductCreate(params) {
                            />
                            <ErrorMessage name='description' className='errors' component='span' />
                            {/* <hr className='separador' /> */}
-                           <button ref={firstButton} onClick={nextStep}>Siguiente paso </button>
+                           <button className='firstButton' ref={firstButton} onClick={nextStep}>Siguiente paso </button>
                            <div className='featuresWrapper' ref={step2}>
                               <h2 className='featuresTitle'>Features</h2>
                               <div className='powerWrapper'>
@@ -351,10 +351,11 @@ function ProductCreate(params) {
                                        <label >{e.name}</label><br />
                                     </>
                                  })}
+                                 
                               </fieldset>
                               <ErrorMessage name='dim' className='errors' component='span' />
                            </div>
-                           <button className='secondButton' ref={secondButton} onClick={next}>Siguiente paso</button>
+                           <button className='secondButton' ref={secondButton} onClick={next}>Último paso</button>
                         </div>
                         <div class="form_right" ref={step3}>
                            <h2>Imagenes y archivos del producto</h2>
@@ -365,8 +366,9 @@ function ProductCreate(params) {
                               }}></input>
                               <h4>Preview:</h4>
                               <img className='imagePreview' src={image} alt='ImageFromForm'></img>
+                           <ErrorMessage name='mainImg' className='errors' component='span' />   
                            </fieldset>
-                           <ErrorMessage name='mainImg' className='errors' component='span' />
+                           
                            <fieldset className='imageFieldset'>
                               <legend>Dimenciones del producto</legend>
                               <input type='file' className='iamgeInput' name='productSize' onClick={imageHandler} onChange={(event) => {
@@ -374,8 +376,9 @@ function ProductCreate(params) {
                               }} ></input>
                               <h4>Preview:</h4>
                               <img className='imagePreview' src={image} alt='ImageFromForm'></img>
+                           <ErrorMessage name='productSize' className='errors' component='span' />   
                            </fieldset>
-                           <ErrorMessage name='productSize' className='errors' component='span' />
+                           
                            <fieldset className='sliderImage'>
                               <legend>Slider</legend>
                               <input className='iamgeInput ' name='slider' id='slider' multiple type='file' onChange={(event) => {
@@ -383,22 +386,24 @@ function ProductCreate(params) {
                               }}
                               />
                               <p className='sliderInfo'>Apretando CTRL podrás seleccionar más de una imagen</p>
+                            <ErrorMessage name='slider' className='errors' component='span' />  
                            </fieldset>
-                           <ErrorMessage name='slider' className='errors' component='span' />
+                           
                            <fieldset className='imageFieldset'>
                               <legend>Hoja tecnica</legend>
                               <input className='iamgeInput' name='dataSheet' onChange={(event) => {
                                  setFieldValue("dataSheet", event.target.files[0]);
                               }} type='file' />
+                           <ErrorMessage name='dataSheet' className='errors' component='span' />   
                            </fieldset>
-                           <ErrorMessage name='dataSheet' className='errors' component='span' />
+                           
                            <fieldset className='imageFieldset'>
                               <legend>Manual de instalación</legend>
                               <input className='iamgeInput' name='installSheet' onChange={(event) => {
                                  setFieldValue("installSheet", event.target.files[0]);
                               }} type='file' />
+                           <ErrorMessage name='installSheet' className='errors' component='span' />   
                            </fieldset>
-                           <ErrorMessage name='installSheet' className='errors' component='span' />
                            <button className='finish' type='submit'>Finalizar creación de producto</button>
                         </div>
                      </Form>

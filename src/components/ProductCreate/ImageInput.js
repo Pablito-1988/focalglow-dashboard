@@ -22,9 +22,9 @@ function ImageInput(params) {
 
     return (
         <>
-            <input type='file' className='iamgeInput'  onChange={imageHandler}></input>
+            <input type='file' className='iamgeInput'   onChange={imageHandler}></input>
             <h4>Preview:</h4>
-            <img className='imagePreview' src={image} alt='ImageFromForm'></img>
+            <img className='imagePreview' src={image}  alt='ImageFromForm'></img>
         </>
     )
     

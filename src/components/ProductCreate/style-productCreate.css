@@ -205,3 +205,8 @@ h4{
     background-color: green;
     color: white;
 }
+.errors{
+    margin:0;
+    color: red;
+    font-size: 18px;
+}

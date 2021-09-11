@@ -1,8 +1,8 @@
 import './style-productCreate.css'
-import { useState, useEffect, useRef } from 'react'
-import ImageAndFiles from './ImageAndFiles'
+import { useState, useEffect, useRef, /* useRef */ } from 'react'
+/* import ImageAndFiles from './ImageAndFiles' */
 /* import { useForm } from './hook/useForm' */
-import { Formik, Form ,ErrorMessage} from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import imageDefault from './default-img.JPG'
 
 function ProductCreate(params) {
@@ -32,13 +32,6 @@ function ProductCreate(params) {
 
 
 
-   const button = useRef()
-   const [displayImageInputs, setImageInputs] = useState(false)
-   function showImageInputs(params) {
-      setImageInputs(true)
-      button.current.style.display = 'none'
-   }
-
 
 
    let cct = []
@@ -66,30 +59,52 @@ function ProductCreate(params) {
       return e.type === 'dim' ? dim.push(e) : '';
    })
 
-   
-      //seteo  un estado para alamacenar la imagen del imput
-      const [image, setImage] = useState(imageDefault)
-      //creo el evento que va a tener el input
-      let imageHandler = (e) => {
-         //seteo un nuevo reader que permite acceder a los archivos de los inputs 
-         const reader = new FileReader();
-         //en la funcion onload se coloca lo que quiero que se haga con la info 
-         reader.onload = () => {
-            //aca si el estado es igual a 2 significa que el FileReader completo la operacion y tiene la informacion 
-            if (reader.readyState === 2) {
-               //se setea el estado con el resultado del fileReader
-               setImage(reader.result)
-            }
+
+   //seteo  un estado para alamacenar la imagen del imput
+   const [image, setImage] = useState(imageDefault)
+
+
+
+   //creo el evento que va a tener el input
+   let imageHandler = (e) => {
+      //seteo un nuevo reader que permite acceder a los archivos de los inputs 
+      const reader = new FileReader();
+      //en la funcion onload se coloca lo que quiero que se haga con la info 
+      reader.onload = () => {
+         //aca si el estado es igual a 2 significa que el FileReader completo la operacion y tiene la informacion 
+         if (reader.readyState === 2) {
+            //se setea el estado con el resultado del fileReader
+            setImage(reader.result)
+
+
          }
-         
-         reader.readAsDataURL(e.target.files[0])
       }
+      reader.readAsDataURL(e.target.files[0])
+   }
+   //aca manejo de los botones y partes del fomulario a mostrar 
+   const step2 = useRef()
+   const firstButton = useRef()
+   const secondButton = useRef()
+   function nextStep(e) {
+      e.preventDefault()
+      firstButton.current.style.display ='none'
+      step2.current.style.display = 'block'
+      secondButton.current.style.display = 'block'
+   }
+   const step3 = useRef()
+   
+   function next(e) {
+      e.preventDefault()
+      secondButton.current.style.display = 'none'
+      step3.current.style.display = 'block'
+   }
 
    return (
       <>
          <h1 className='principalTitle'>Creación de producto</h1>
          <div className='formContainer'>
             <Formik
+               //agrego los valores iniciales
                initialValues={{
                   categoryId: '',
                   name: '',
@@ -101,22 +116,25 @@ function ProductCreate(params) {
                   material: [],
                   cct: [],
                   dim: [],
-                  optic:[],
-                  mainImg:{},
-                  dataSheet:'',
-                  installSheet: ''
+                  optic: [],
+                  dataSheet: '',
+                  installSheet: '',
+                  mainImg: '',
+                  productSize: '',
+                  slider: []
+
                }}
 
-               
-               validate={(values)=>{
+               //valido los campos 
+               validate={(values) => {
                   const errors = {}
-                  if(!values.name){
+                  if (!values.name) {
                      errors.name = 'Debes agregar un nombre para el producto'
-                  }else if (values.name.length<3){
+                  } else if (values.name.length < 3) {
                      errors.name = 'Debes agregar un nombr mas largo para el producto'
                   }
-                  if (!values.quantity){
-                     errors.quantity ='Debes agregar una cantidad para el producto'
+                  if (!values.quantity) {
+                     errors.quantity = 'Debes agregar una cantidad para el producto'
                   }
                   if (!values.price) {
                      errors.price = 'Debes agregar un precio  para el producto'
@@ -150,17 +168,27 @@ function ProductCreate(params) {
                   if (!values.installSheet) {
                      errors.installSheet = 'Debes agregar un archivo'
                   }
+                  if (!values.mainImg) {
+                     errors.mainImg = 'Debes agregar un imagen '
+                  }
+                  if (!values.productSize) {
+                     errors.productSize = 'Debes agregar una imagen sobre las dimenciones del producto'
+                  }
+                  if (!values.slider) {
+                     errors.slider = 'Debes agregar por lo menos una imagen '
+                  }
+                  console.log(values)
                   console.log(errors)
                   return errors
                }}
                onSubmit={(values) => {
                   console.log(values)
-                  
+
                }}
-               
+
             >
                {
-                  ({ handleChange, setFieldValue}) => (
+                  ({ handleChange, setFieldValue }) => (
 
                      <Form >
                         {/* <form onSubmit={handlerSubmit} > */}
@@ -179,8 +207,8 @@ function ProductCreate(params) {
                               onChange={handleChange}
                               name="name"
                               id='name'
-                              className='productName' /> 
-                           <ErrorMessage name ='name' className='errors' component='span'/>
+                              className='productName' />
+                           <ErrorMessage name='name' className='errors' component='span' />
                            <label className='labelName'>Cantidad:</label>
                            <input
                               type='number'
@@ -209,151 +237,159 @@ function ProductCreate(params) {
                            />
                            <ErrorMessage name='description' className='errors' component='span' />
                            {/* <hr className='separador' /> */}
-                           <h2 className='featuresTitle'>Features</h2>
-                           <div className='powerWrapper'>
-                              <label className='title'>Power</label>
+                           <button ref={firstButton} onClick={nextStep}>Siguiente paso </button>
+                           <div className='featuresWrapper' ref={step2}>
+                              <h2 className='featuresTitle'>Features</h2>
+                              <div className='powerWrapper'>
+                                 <label className='title'>Power</label>
 
-                              <select
-                              className='powerSelect' 
-                              name="power" 
-                              onChange={handleChange} 
-                              multiple 
-                              >
-                                 {power.map((e, index) => {
+                                 <select
+                                    className='powerSelect'
+                                    name="power"
+                                    onChange={handleChange}
+                                    multiple
+                                 >
+                                    {power.map((e, index) => {
+                                       return <>
+                                          <option
+                                             key={e.name + index}
+                                             type="checkbox"
+                                             id={e.name}
+                                             value={e.id}
+                                          >{e.name}</option>
+                                       </>
+                                    })}
+                                 </select>
+                                 <ErrorMessage name='power' className='errors' component='span' />
+                              </div>
+                              <p className='powerInfo'>Recordá que apretando CTRL podrás seleccionar más de una potencia</p>
+                              <fieldset className='fuente'>
+                                 <legend className='title'>Fuente</legend>
+                                 {source.map((e, index) => {
+                                    return (
+                                       <div>
+                                          <input
+                                             key={e.name + index}
+                                             class='radio'
+                                             onChange={handleChange}
+                                             type="radio"
+                                             id={e.name}
+                                             value={e.id}
+                                             name="source"
+                                          />
+                                          <label  >{e.name}</label>
+                                       </div>
+                                    )
+                                 })}
+
+                              </fieldset>
+                              <ErrorMessage name='source' className='errors' component='span' />
+                              <fieldset className='fieldset'>
+                                 <legend className='title'>Material</legend>
+                                 {materiales.map((e, index) => {
                                     return <>
-                                       <option 
-                                       key={e.name + index} 
-                                       type="checkbox" 
-                                       id={e.name} 
-                                       value={e.id} 
-                                       >{e.name}</option>  
+                                       <input
+                                          key={e.name + index}
+                                          type="checkbox"
+                                          onChange={handleChange}
+                                          id={e.name}
+                                          value={e.id}
+                                          name="material"
+                                       />
+                                       <label >{e.name}</label><br />
                                     </>
                                  })}
-                              </select>
-                              <ErrorMessage name='power' className='errors' component='span' />
-                           </div>
-                           <p className='powerInfo'>Recordá que apretando CTRL podrás seleccionar más de una potencia</p>
-                           <fieldset className='fuente'>
-                              <legend className='title'>Fuente</legend>
-                              {source.map((e, index) => {
-                                 return (
-                                    <div>
-                                       <input 
-                                       key={e.name + index} 
-                                       class='radio' 
-                                       onChange={handleChange} 
-                                       type="radio" 
-                                       id={e.name} 
-                                       value={e.id} 
-                                       name="source" 
+
+                              </fieldset>
+                              <ErrorMessage name='material' className='errors' component='span' />
+                              <fieldset className='fieldset'>
+                                 <legend className='title'>Optica</legend>
+                                 {optic.map((e, index) => {
+                                    return <>
+                                       <input
+                                          key={e.name + index}
+                                          type="checkbox"
+                                          id={e.name}
+                                          onChange={handleChange}
+                                          value={e.id}
+                                          name="optic" />
+                                       <label >{e.name}</label><br />
+                                    </>
+                                 })}
+
+                              </fieldset>
+                              <ErrorMessage name='optic' className='errors' component='span' />
+                              <fieldset className='fieldset'>
+                                 <legend className='title'>CCT</legend>
+                                 {cct.map((e, index) => {
+                                    return <>
+                                       <input
+                                          key={e.name + index}
+                                          type="checkbox"
+                                          id={e.name}
+                                          onChange={handleChange}
+                                          value={e.id}
+                                          name='cct'
                                        />
-                                       <label  >{e.name}</label>
-                                    </div>
-                                 )
-                              })}
-                              
-                           </fieldset>
-                           <ErrorMessage name='source' className='errors' component='span' />
-                           <fieldset className='fieldset'>
-                              <legend className='title'>Material</legend>
-                              {materiales.map((e, index) => {
-                                 return <>
-                                    <input 
-                                    key={e.name + index} 
-                                    type="checkbox" 
-                                    onChange={handleChange} 
-                                    id={e.name} 
-                                    value={e.id} 
-                                    name="material" 
-                                    />
-                                    <label >{e.name}</label><br />
-                                 </>
-                              })}
-                              
-                           </fieldset>
-                           <ErrorMessage name='material' className='errors' component='span' />
-                           <fieldset className='fieldset'>
-                              <legend className='title'>Optica</legend>
-                              {optic.map((e, index) => {
-                                 return <>
-                                    <input 
-                                    key={e.name + index} 
-                                    type="checkbox" 
-                                    id={e.name} 
-                                    onChange={handleChange} 
-                                    value={e.id} 
-                                    name="optic" />
-                                    <label >{e.name}</label><br />
-                                 </>
-                              })}
-                              
-                           </fieldset>
-                           <ErrorMessage name='optic' className='errors' component='span' />
-                           <fieldset className='fieldset'>
-                              <legend className='title'>CCT</legend>
-                              {cct.map((e, index) => {
-                                 return <>
-                                    <input 
-                                    key={e.name + index} 
-                                    type="checkbox" 
-                                    id={e.name} 
-                                    onChange={handleChange} 
-                                    value={e.id} 
-                                    name='cct' 
-                                    />
-                                    <label >{e.name}</label><br />
-                                 </>
-                              })}
-                           </fieldset>
-                           <ErrorMessage name='cct' className='errors' component='span' />
-                           <fieldset className='fieldset'>
-                              <legend className='title'>Dim</legend>
-                              {dim.map((e, index) => {
-                                 return <>
-                                    <input 
-                                    key={e.name + index} 
-                                    type="checkbox" 
-                                    id={e.name} 
-                                    onChange={handleChange} 
-                                    value={e.id} 
-                                    name='dim' 
-                                    />
-                                    <label >{e.name}</label><br />
-                                 </>
-                              })}
-                           </fieldset>
-                           <ErrorMessage name='dim' className='errors' component='span' />
-                           <div ref={button} className='nextButton'>
-                              <div onClick={showImageInputs} className='buttonContainer'>
-                                 <h3  >Siguiente paso</h3>
-                              </div>
+                                       <label >{e.name}</label><br />
+                                    </>
+                                 })}
+                              </fieldset>
+                              <ErrorMessage name='cct' className='errors' component='span' />
+                              <fieldset className='fieldset'>
+                                 <legend className='title'>Dim</legend>
+                                 {dim.map((e, index) => {
+                                    return <>
+                                       <input
+                                          key={e.name + index}
+                                          type="checkbox"
+                                          id={e.name}
+                                          onChange={handleChange}
+                                          value={e.id}
+                                          name='dim'
+                                       />
+                                       <label >{e.name}</label><br />
+                                    </>
+                                 })}
+                              </fieldset>
+                              <ErrorMessage name='dim' className='errors' component='span' />
                            </div>
+                           <button className='secondButton' ref={secondButton} onClick={next}>Siguiente paso</button>
                         </div>
-                        <div class="form_right">
+                        <div class="form_right" ref={step3}>
                            <h2>Imagenes y archivos del producto</h2>
                            <fieldset className='imageFieldset'>
                               <legend>Imagen principal</legend>
-                              <input type='file' className='iamgeInput' onChange={imageHandler}></input>
+                              <input type='file' name='mainImg' className='iamgeInput' /* onChange={imageHandler} */ onChange={(event) => {
+                                 setFieldValue("mainImg", event.target.files[0]);
+                              }}></input>
                               <h4>Preview:</h4>
                               <img className='imagePreview' src={image} alt='ImageFromForm'></img>
                            </fieldset>
+                           <ErrorMessage name='mainImg' className='errors' component='span' />
                            <fieldset className='imageFieldset'>
                               <legend>Dimenciones del producto</legend>
-                              <input type='file' className='iamgeInput' onChange={imageHandler}></input>
+                              <input type='file' className='iamgeInput' name='productSize' onClick={imageHandler} onChange={(event) => {
+                                 setFieldValue("productSize", event.target.files[0]);
+                              }} ></input>
                               <h4>Preview:</h4>
                               <img className='imagePreview' src={image} alt='ImageFromForm'></img>
                            </fieldset>
+                           <ErrorMessage name='productSize' className='errors' component='span' />
                            <fieldset className='sliderImage'>
                               <legend>Slider</legend>
-                              <input className='iamgeInput ' name='slider' id='slider' multiple type='file' 
-                               />
+                              <input className='iamgeInput ' name='slider' id='slider' multiple type='file' onChange={(event) => {
+                                 setFieldValue("slider", event.target.files[0]);
+                              }}
+                              />
                               <p className='sliderInfo'>Apretando CTRL podrás seleccionar más de una imagen</p>
                            </fieldset>
+                           <ErrorMessage name='slider' className='errors' component='span' />
                            <fieldset className='imageFieldset'>
                               <legend>Hoja tecnica</legend>
                               <input className='iamgeInput' name='dataSheet' onChange={(event) => {
                                  setFieldValue("dataSheet", event.target.files[0]);
-                              }}  type='file' />
+                              }} type='file' />
                            </fieldset>
                            <ErrorMessage name='dataSheet' className='errors' component='span' />
                            <fieldset className='imageFieldset'>

@@ -27,8 +27,12 @@ form{
     margin-left: 10px;
         padding: 10px;
 }
+.featuresWrapper{
+    display: none;
+}
 .form_right{
     width: 45%;
+    display: none;
     
 }
 .separador{
@@ -190,11 +194,7 @@ h4{
     border: 1px solid red;
     font-size: 15px;
 }
-.nextButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-}
+
 .buttonContainer{
         display: flex;
     cursor: pointer;
@@ -209,4 +209,7 @@ h4{
     margin:0;
     color: red;
     font-size: 18px;
+}
+.secondButton{
+    display: none;
 }

@@ -377,7 +377,7 @@ function ProductCreate(params) {
                            <h2>Imagenes y archivos del producto</h2>
                            <fieldset className='imageFieldset'>
                               <legend>Imagen principal</legend>
-                              <input type='file' name='mainImg' className='iamgeInput'  /* onChange={imageHandler} */ onChange={(event) => {
+                              <input type='file' name='mainImg' className='iamgeInput'  onChange={(event) => {
                                  imageHandlerOne(event)
                                  setFieldValue("mainImg", event.target.files[0]);
                               }}></input>
@@ -388,7 +388,7 @@ function ProductCreate(params) {
                            
                            <fieldset className='imageFieldset'>
                               <legend>Dimenciones del producto</legend>
-                              <input type='file' className='iamgeInput' name='productSize' /* onKeyPress={imageHandler} */ onChange={(event) => {
+                              <input type='file' className='iamgeInput' name='productSize'  onChange={(event) => {
                                  imageHandlerTwo(event)
                                  setFieldValue("productSize", event.target.files[0]);
                               }} ></input>
@@ -401,7 +401,7 @@ function ProductCreate(params) {
                               <legend>Slider</legend>
                               <input className='iamgeInput ' name='slider' id='slider' multiple type='file' onChange={(event) => {
                                  
-                                 setFieldValue("slider", event.target.files[0]);
+                                 setFieldValue("slider", event.target.files);
                               }}
                               />
                               <p className='sliderInfo'>Apretando CTRL podrás seleccionar más de una imagen</p>

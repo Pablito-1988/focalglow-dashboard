@@ -110,3 +110,8 @@ caption {
   display: block;
   margin: 6px auto;
 }
+
+.limit {
+  width: 50px;
+  margin-left: 5px;
+}

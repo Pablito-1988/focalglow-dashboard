@@ -5,28 +5,26 @@ import Modal from '../PrincipialInfo/Modal/Modal'
 
 function ProductList() {
 
+  //Variables de lista de productos
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [displayProductModal, setDisplayProductModal] = useState(false)
   const [productDetail, setProductDetail] = useState({})
 
+  //Variables para el paginado
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
   const [prevPage, setPrevPage] = useState(1)
   const [nextPage, setNextPage] = useState(2)
-  const [pageQuantity, setPageQuantity] = useState(1)
+  const [pageQuantity, setPageQuantity] = useState(null)
 
+  useEffect(() => {
+    getProducts(1, limit)
+  }, [limit])
 
   useEffect(() => {
     getProducts(page, limit)
   }, [page])
-
-  useEffect(() => {
-
-    setPage(1)
-  }, [limit])
-
-
 
 
   function getProducts(page, limit) {
@@ -37,7 +35,7 @@ function ProductList() {
         setProducts(response.data)
         page - 1 === 0 ? setPrevPage(1) : setPrevPage(page - 1)
         page + 1 > response.meta.pageQuantity ? setNextPage(response.meta.pageQuantity) : setNextPage(page + 1)
-        page > response.meta.pageQuantity ? setPage(response.meta.pageQuantity) : setPage(page)
+        page >= response.meta.pageQuantity ? setPage(response.meta.pageQuantity) : setPage(page)
         setPageQuantity(response.meta.pageQuantity)
       })
       .catch((err) => {
@@ -150,10 +148,7 @@ function ProductList() {
 
       </table>
       <caption>Productos por vista:
-        <select value={limit} onChange={event => {
-          setLimit(event.target.value)
-
-        }}>
+        <select className="limit" value={limit} onChange={event => setLimit(event.target.value)}>
           <option value="5"> 5</option>
           <option value="10"> 10</option>
           <option value="15"> 15</option>
@@ -162,13 +157,13 @@ function ProductList() {
       </caption>
 
       <div className="page">
-        <button onClick={() => setPage(page - 1)} className="offset">
+        <button onClick={() => setPage(prevPage)} className="offset">
           <i className="fas fa-arrow-left"></i>
         </button>
         <button type="submit" className="offset white">
           {page}
         </button>
-        <button onClick={() => setPage(page + 1)} className="offset">
+        <button onClick={() => setPage(nextPage)} className="offset">
           <i className="fas fa-arrow-right"></i>
         </button>
       </div>

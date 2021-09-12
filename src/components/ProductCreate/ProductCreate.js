@@ -152,8 +152,8 @@ function ProductCreate(params) {
                   }
                   if (!values.description) {
                      errors.description = 'Debes agregar una descripción para el producto'
-                  } else if (values.description.length < 3) {
-                     errors.description = 'Debes agregar una descripcion  mas larga para el producto'
+                  } else if (values.description.length < 20) {
+                     errors.description = 'Debes agregar una descripcion  mas larga para el producto, por lo menos 20 caracteres'
                   }
                   if (values.source.length === 0) {
                      errors.source = 'Debes agregar una Fuente  para el producto'
@@ -180,7 +180,7 @@ function ProductCreate(params) {
                      errors.installSheet = 'Debes agregar un archivo'
                   }
                   if (!values.mainImg) {
-                     errors.mainImg = 'Debes agregar un imagen '
+                     errors.mainImg = 'Debes agregar un imagen principal'
                   }
                   if (!values.productSize) {
                      errors.productSize = 'Debes agregar una imagen sobre las dimenciones del producto'
@@ -208,6 +208,7 @@ function ProductCreate(params) {
                            <h2>Detalles y Features del producto</h2>
                            <label className='labelName'>Categoria</label>
                            <select name="categoryId" onChange={handleChange}>
+                                 <option>Seleccionar una categoria</option>
                               {category.map((e, index) => {
                                  return <option key={e.name + index} value={e.id}>{e.name}</option>
                               })}
@@ -240,7 +241,7 @@ function ProductCreate(params) {
                               onChange={handleChange}
 
                            />
-                           <ErrorMessage name='quantity' className='errors' component='span' />
+                           <ErrorMessage name='price' className='errors' component='span' />
                            <label>Descripción del producto: </label>
                            <textarea type='text'
                               placeholder="Poné una descripción copada"
@@ -413,7 +414,7 @@ function ProductCreate(params) {
                            
                            <fieldset className='imageFieldset'>
                               <legend className='title'>Hoja tecnica</legend>
-                              <input className='iamgeInput' name='dataSheet' onChange={(event) => {
+                              <input className='iamgeInput' name='dataSheet' accept='.pdf' onChange={(event) => {
                                  setFieldValue("dataSheet", event.target.files[0]);
                               }} type='file' />
                            <ErrorMessage name='dataSheet' className='errors' component='span' />   
@@ -421,7 +422,7 @@ function ProductCreate(params) {
                            
                            <fieldset className='imageFieldset'>
                               <legend className='title'>Manual de instalación</legend>
-                              <input className='iamgeInput' name='installSheet' onChange={(event) => {
+                              <input className='iamgeInput' name='installSheet' accept='.pdf' onChange={(event) => {
                                  setFieldValue("installSheet", event.target.files[0]);
                               }} type='file' />
                            <ErrorMessage name='installSheet' className='errors' component='span' />   

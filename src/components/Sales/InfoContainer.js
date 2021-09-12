@@ -1,8 +1,8 @@
+import ProductModal from '../ProductModal/ProductModal'
 import { useState, useEffect } from 'react'
-import Table from '../Table/Table'
+import './style-infoContainer.css'
 
-export default function MostSold() {
-
+export default function InfoContainer() {
     const [productModal, setProductModal] = useState(false)
     const [mostSold, setMostSold] = useState([])
     const [columns, setColumns] = useState([])
@@ -12,10 +12,7 @@ export default function MostSold() {
     useEffect(() => {
         fetch('http://localhost:3000/api/checkout/listBySold/1/limit/5')
             .then(response => response.json())
-            .then(data => {
-                setMostSold(data.data)
-                setColumns(Object.keys(mostSold[0]))
-            })
+            .then(data => setMostSold(data.data))
             .catch(error => console.log(error))
     }, [])
     useEffect(() => {
@@ -43,17 +40,13 @@ export default function MostSold() {
 
 
     return (
-        <>
-            <div id="openModal" class="modalDialog">
-                <div>
-                    {/* <button onClick={onClickClose} title="Close" class="close">X</button> */}
-                    <h2>Detalles del Producto</h2>
-                    <Table columnName={columns} tableInfo={mostSold} />
-                </div>
-            </div>
+        <div class='product-info-button'>
+            <button onClick={showProductModalMost}>Más Vendidos</button>
+            <button onClick={showProductModalLast}>Últimos Vendidos</button>
+            {productModal &&
+                <ProductModal
+                    onClickClose={() => hideProductModal()}
+                    columns={columns} products={modalInfo} />}
+        </div>)
 
-        </>
-    )
 }
-
-

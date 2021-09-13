@@ -32,7 +32,7 @@ function App() {
         <Route exact path='/create'>
           {<ProductCreate />}
         </Route>
-        <Route exact path='/edit'>
+        <Route exact path='/edit/:id'>
           {<ProductEdit />}
         </Route>
         <Route component={Error} />

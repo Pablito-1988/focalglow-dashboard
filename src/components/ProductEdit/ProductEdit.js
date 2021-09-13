@@ -2,8 +2,27 @@ import '../ProductCreate/style-productCreate.css'
 import { useState, useEffect} from 'react'
 /* import ImageAndFiles from './ImageAndFiles' */
 import ImageInput from '../ProductCreate/ImageInput'
+import { useParams } from 'react-router-dom'
 
-function ProductEdit(params) {
+function ProductEdit(props) {
+    
+    const id = useParams()
+    console.log(id)
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        fetch(`/api/products/${id.id}`)
+            .then(response => response.json())
+            .then(response => {
+                setProduct(
+                    response
+                    
+                )
+                
+            })
+    }, [id])
+    let Edit = product.data
+    console.log(product)
+
     const [category, setCategory] = useState([])
     useEffect(() => {
 
@@ -71,13 +90,13 @@ function ProductEdit(params) {
                             })}
                         </select>
                         <label className='labelName'>Nombre del Producto:</label>
-                        <input type='text' className='productName' />
+                        <input type='text' className='productName' placeholder={Edit.name} />
                         <label className='labelName'>Cantidad:</label>
-                        <input type='number' className='number' min='0' />
+                        <input type='number' className='number' min='0' placeholder={Edit.quantity} />
                         <label>Precio unitario base:</label>
-                        <input type='number' className='number' min='0' placeholder='$' />
+                        <input type='number' className='number' min='0' placeholder={Edit.price} />
                         <label>Descripción del producto: </label>
-                        <textarea type='text' placeholder="Poné una descripción copada" />
+                        <textarea type='text' placeholder={Edit.description} />
                         {/* <hr className='separador' /> */}
                         <h2 className='featuresTitle'>Features</h2>
                         <div className='powerWrapper'>

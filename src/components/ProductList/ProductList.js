@@ -18,6 +18,7 @@ function ProductList() {
 
   useEffect(() => {
     getProducts(1, limit)
+    setPage(1)
   }, [limit])
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function ProductList() {
   }
 
   const firstPage = page === 1 ? true : false
-  const lastPage = page === pageQuantity ? true : false
+  const lastPage = page >= pageQuantity ? true : false
 
   //Fin del paginado
 

@@ -1,40 +1,12 @@
 import '../ProductCreate/style-productCreate.css'
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 /* import ImageAndFiles from './ImageAndFiles' */
 import ImageInput from '../ProductCreate/ImageInput'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function ProductEdit(props) {
-    
-    const id = useParams()
+    let { id } = useParams()
     console.log(id)
-    const [product, setProduct] = useState([])
-    useEffect(() => {
-        fetch(`/api/products/${id.id}`)
-            .then(response => response.json())
-            .then(response => {
-                setProduct(
-                    response
-                    
-                )
-                
-            })
-    }, [id])
-    let Edit = product.data
-    console.log(product)
-
-    const [category, setCategory] = useState([])
-    useEffect(() => {
-
-        fetch(`/api/category/`)
-            .then(response => response.json())
-            .then(data => {
-                setCategory(
-                    data.data
-                )
-            })
-    }, [])
-
     const [features, setfeatures] = useState([])
     useEffect(() => {
 
@@ -46,6 +18,35 @@ function ProductEdit(props) {
                 )
             })
     }, [])
+    const [category, setCategory] = useState([])
+    useEffect(() => {
+
+        fetch(`/api/category/`)
+            .then(response => response.json())
+            .then(data => {
+                setCategory(
+                    data.data
+                )
+            })
+    }, [])
+    const [productState, setProductState] = useState(false)
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        fetch(`/api/products/${id}`)
+            .then(response => response.json())
+            .then(response => {
+                setProduct(
+                    response
+                )
+                setProductState(true)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+    }, [id])
+
+    console.log(product)
 
     let cct = []
     features.map(e => {
@@ -76,6 +77,7 @@ function ProductEdit(props) {
 
 
     return (
+
         <>
             <h1 className='principalTitle'>Edición de producto</h1>
             <div className='formContainer'>
@@ -90,13 +92,13 @@ function ProductEdit(props) {
                             })}
                         </select>
                         <label className='labelName'>Nombre del Producto:</label>
-                        <input type='text' className='productName' placeholder={Edit.name} />
+                        {productState && <input type='text' className='productName' placeholder={product.data.name} />}
                         <label className='labelName'>Cantidad:</label>
-                        <input type='number' className='number' min='0' placeholder={Edit.quantity} />
+                        {productState &&<input type='number' className='number' min='0' placeholder={product.data.quantity} />}
                         <label>Precio unitario base:</label>
-                        <input type='number' className='number' min='0' placeholder={Edit.price} />
+                        {productState &&<input type='number' className='number' min='0' placeholder={product.data.price} />}
                         <label>Descripción del producto: </label>
-                        <textarea type='text' placeholder={Edit.description} />
+                        {productState &&<textarea type='text' placeholder={product.data.description} />}
                         {/* <hr className='separador' /> */}
                         <h2 className='featuresTitle'>Features</h2>
                         <div className='powerWrapper'>
@@ -167,11 +169,11 @@ function ProductEdit(props) {
                         <h2>Imagenes y archivos del producto</h2>
                         <fieldset className='imageFieldset'>
                             <legend>Imagen principal</legend>
-                            <ImageInput />
+                           {productState&& <ImageInput data={product.data.images[0].name} />}
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Dimenciones del producto</legend>
-                            <ImageInput />
+                            {productState && <ImageInput data={product.data.images[2].name} />}
                         </fieldset>
                         <fieldset className='sliderImage'>
                             <legend>Slider</legend>
@@ -181,10 +183,12 @@ function ProductEdit(props) {
                         <fieldset className='imageFieldset'>
                             <legend>Hoja tecnica</legend>
                             <input className='iamgeInput' type='file' />
+                            {productState && <a href={`http://localhost:3000/pdf/${product.data.files[0].name}`}>Archivo</a>}
                         </fieldset>
                         <fieldset className='imageFieldset'>
                             <legend>Manual de instalación</legend>
                             <input className='iamgeInput' type='file' />
+                            {productState && <a href={`http://localhost:3000/pdf/${product.data.files[1].name}`}>Archivo</a>}
                         </fieldset>
 
                         <button className='finish' type='submit'>Finalizar edición de producto</button>

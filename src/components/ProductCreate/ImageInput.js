@@ -1,8 +1,9 @@
 import {useState} from 'react'
 import imageDefault from'./default-img.JPG'
 
-function ImageInput(params) {
-    //seteo  un estado para alamacenar la imagen del imput
+function ImageInput(props) {
+        console.log(props)
+   /*  //seteo  un estado para alamacenar la imagen del imput
     const [image, setImage] = useState(imageDefault)
     //creo el evento que va a tener el input
     let imageHandler = (e) =>{
@@ -18,14 +19,14 @@ function ImageInput(params) {
         }
         console.log(e.target.files[0])
         reader.readAsDataURL(e.target.files[0])
-    }
+    } */
 
 
     return (
         <>
-            <input type='file' className='iamgeInput'   onChange={imageHandler}></input>
+            <input type='file' className='iamgeInput'   /* onChange={imageHandler */></input>
             <h4>Preview:</h4>
-            <img className='imagePreview' src={image}  alt='ImageFromForm'></img>
+            <img className='imagePreview' src={`http://localhost:3000/img/${props.data}`}  alt='ImageFromForm'></img>
         </>
     )
     

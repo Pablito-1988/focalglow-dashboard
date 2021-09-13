@@ -53,13 +53,13 @@
 	box-shadow: 5px 6px grey;
 	height: 60vh;
 	overflow-y: scroll;
-	-ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+/* 	-ms-overflow-style: none;  /* IE and Edge */
+  /* scrollbar-width: none; */  /* Firefox */ 
 }
 
-.infoContainer::-webkit-scrollbar {
+/* .infoContainer::-webkit-scrollbar {
   display: none;
-}
+} */
 
 
 

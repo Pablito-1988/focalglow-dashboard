@@ -1,5 +1,7 @@
 import Row from '../Row/Row'
 export default function Table({ columnName, tableInfo }) {
+    console.log(columnName)
+    console.log(tableInfo)
     return (
 
         <table>

@@ -1,7 +1,6 @@
 import './style-rigthSideInfo.css'
 import { useState, useEffect } from 'react'
 import QuantityProducts from './quantityProducts'
-import InfoContainer from '../../InfoContainer/InfoContainer'
 /* import { Link } from 'react-router-dom' */
 
 function RightSideInfo(params) {

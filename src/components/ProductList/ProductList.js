@@ -81,8 +81,6 @@ function ProductList() {
     setDisplayProductModal(false)
   }
 
-
-
   const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 
   const load = (
@@ -141,21 +139,16 @@ function ProductList() {
                     <i className="far fa-edit"></i>
                   </Link>
                 </td>
-
                 <td className="center">
                   <button onClick={() => deleteProduct(element.id)} variant="danger" className="trash" type="submit"><i class="far fa-trash-alt"></i></button>
                 </td>
-
-
               </tr>
-
             )
           })
           }
         </tbody>
-
-
       </table>
+
       <caption>Productos por vista:
         <select className="limit" value={limit} onChange={event => setLimit(event.target.value)}>
           <option value="5"> 5</option>

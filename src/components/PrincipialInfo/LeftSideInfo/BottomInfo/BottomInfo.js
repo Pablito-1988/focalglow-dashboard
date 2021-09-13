@@ -4,12 +4,12 @@ import './style-bottomInfo.css'
 function BottomInfo(params) {
     const [lastUser, setlastUser] = useState(null)
     useEffect(() => {
-       
+
         fetch('/api/users/last')
             .then(response => response.json())
             .then(data => {
                 setlastUser(
-                    data.users
+                    data.data
                 )
             })
     }, [])
@@ -30,8 +30,8 @@ function BottomInfo(params) {
                             <div className='userPersonalData'>
                                 <ul>
                                     <li><h4>Id: {lastUser.id}</h4></li>
-                                <li><h4>Nombre: {lastUser.firstName} {lastUser.lastName}</h4> </li>
-                                <li><h4>Email: {lastUser.email}</h4></li>
+                                    <li><h4>Nombre: {lastUser.firstName} {lastUser.lastName}</h4> </li>
+                                    <li><h4>Email: {lastUser.email}</h4></li>
                                 </ul>
 
                             </div>

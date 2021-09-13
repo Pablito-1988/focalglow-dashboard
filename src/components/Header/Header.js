@@ -16,14 +16,15 @@ function Header(params) {
                         <div class="dropdown">
                             <li class="dropbtn">Tablas</li>
                             <div class="dropdown-content">
-                                <Link to='/us'>Ventas</Link>
+                                <Link to='/products'>Productos</Link>
+                                <Link to='/sales'>Ventas</Link>
                                 <Link to='/create'>Creación de Prod.</Link>
                                 <Link to='/edit'>Edición de Prod.</Link>
                             </div>
                         </div>
                         <li><Link to='/us'>Nosotros</Link></li>
-                        
-                        
+
+
                     </ul>
                 </nav>
 

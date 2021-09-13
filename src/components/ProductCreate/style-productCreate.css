@@ -205,7 +205,7 @@ h4{
 }
 .firstButton{
     
-    width: 30%;
+    width: 33%;
     height: 40px;
     font-size: 20px;
     background-color: black;
@@ -226,7 +226,7 @@ h4{
 
 .secondButton{
     display: none;
-    width: 30%;
+    width: 33%;
     height: 40px;
     font-size: 20px;
     background-color: black;
@@ -249,4 +249,8 @@ h4{
     margin-left: 10px;
     background-color: red;
     color: white;
+    transition: 0.3s;
+}
+.reset:hover{
+    opacity: 0;
 }

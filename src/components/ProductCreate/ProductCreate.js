@@ -105,7 +105,7 @@ function ProductCreate(params) {
    }
    function gonza(e) {
       e.preventDefault()
-      alert('No Gonza aca no hay que tocar, esto borra todo')
+      alert('No Gonza! Acá no hay que tocar, esto borra todo')
    }
    return (
       <>
@@ -194,6 +194,7 @@ function ProductCreate(params) {
                
                onSubmit={(values ) => {
                   console.log(values)
+                  alert('falta la api por post, pero dentro de todo la info esta......')
                   
                }}
 

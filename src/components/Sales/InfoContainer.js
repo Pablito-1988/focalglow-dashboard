@@ -36,14 +36,21 @@ export default function InfoContainer() {
 
     return (
         <div class='product-info-button'>
-            <h2>Productos más Vendidos</h2>
-            {mostSold.length > 0 ?
-                <Table columnName={mostColumns} tableInfo={mostSold} /> :
-                <span>Aún no hay productos vendidos</span>}
-            <h2>Últimos productos vendidos</h2>
-            {lastSold.length > 0 ?
-                <Table columnName={lastColumns} tableInfo={lastSold} /> :
-                <span>Aún no hay productos vendidos</span>}
+            <article>
+                <h2>Productos más Vendidos</h2>
+                {mostSold.length > 0 ?
+                    <Table columnName={mostColumns} tableInfo={mostSold} /> :
+                    <span>Aún no hay productos vendidos</span>}
+            </article>
+            <article>
+
+                <h2>Últimos productos vendidos</h2>
+
+                {lastSold.length > 0 ?
+                    <Table columnName={lastColumns} tableInfo={lastSold} /> :
+                    <span>Aún no hay productos vendidos</span>}
+            </article>
+
         </div>)
 
 }

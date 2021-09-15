@@ -136,7 +136,10 @@ function ProductList() {
                   <button onClick={() => showProductDetail(element.id)} className="search"><i className="fas fa-search"></i></button>
                 </td>
                 <td className="center">
-                  <Link to={{ pathname: `http://localhost:3000/product/${element.id}/edit` }} target="_blank" >
+                  <Link to={{
+                    pathname: `/edit/${element.id}`, state: {
+                      userDefined: (element.id)
+                    }}} >
                     <i className="far fa-edit"></i>
                   </Link>
                 </td>

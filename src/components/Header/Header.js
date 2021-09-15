@@ -19,7 +19,6 @@ function Header(params) {
                                 <Link to='/products'>Productos</Link>
                                 <Link to='/sales'>Ventas</Link>
                                 <Link to='/create'>Creación de Prod.</Link>
-                                <Link to='/edit'>Edición de Prod.</Link>
                             </div>
                         </div>
                         <li><Link to='/us'>Nosotros</Link></li>

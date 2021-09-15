@@ -1,11 +1,12 @@
 import '../ProductCreate/style-productCreate.css'
 import { useState, useEffect, useMemo } from 'react'
-/* import ImageAndFiles from './ImageAndFiles' */
 import ImageInput from '../ProductCreate/ImageInput'
-import { /* Link, */ useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 
 function ProductEdit(props) {
+    //capruto el id del params
     let { id } = useParams()
+    //traigo las features desde la db 
     const [features, setfeatures] = useState([])
     useEffect(() => {
 
@@ -18,6 +19,7 @@ function ProductEdit(props) {
             })
     }, [])
 
+    //separo las features para poder mapearlas en el formulario 
     let cct = []
     features.map(e => {
         return e.type === 'cct' ? cct.push(e) : '';
@@ -43,7 +45,7 @@ function ProductEdit(props) {
         return e.type === 'dim' ? dim.push(e) : '';
     })
 
-
+    //traigo las categorias de la db 
     const [category, setCategory] = useState([])
     useEffect(() => {
 
@@ -55,9 +57,9 @@ function ProductEdit(props) {
                 )
             })
     }, [])
-    const [productState, setProductState] = useState(false)
-    /* const[oldData , setOldData] = useState([]) */
 
+    //traigo el producto usando el parametro que vino por la url y seteo un estado para el producto
+    const [productState, setProductState] = useState(false)
     const [product, setProduct] = useState([])
     useEffect(() => {
         fetch(`/api/products/${id}`)
@@ -73,7 +75,7 @@ function ProductEdit(props) {
             })
 
     }, [id])
-
+      //separo las features que vienen del producto para poder comparar en el formulario. Y uso useMemo() para memorizar los valores   
      let old = useMemo(() => {
         
          if (productState) {
@@ -102,10 +104,10 @@ function ProductEdit(props) {
             return e.type === 'dim' ? oldDim.push(e) : '';
         })
         return { oldCct, oldPower, oldSource, oldMateriales, oldOptic, oldDim }
-    }
+    }   //agrego las dependencias que tiene que mirar el hook
      }, [productState, product])
      
-
+            //si el producto ya llego del fetch, y ya se armaron los arrays con las features del producto a editar que renderize todo 
     return (productState && old  )&& (<>
         
             <h1 className='principalTitle'>Edición de producto</h1>

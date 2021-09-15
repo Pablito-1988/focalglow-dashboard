@@ -10,7 +10,7 @@ function TopSalesInfoBox(params) {
 	const [totalItems, setTotalItems] = useState([])
 	const [SalesQty, setSalesQty] = useState([])
 
-	const boxName = ['Ventas', 'Cantidad de ventas', 'Items vendidos']
+	const boxName = ['Ventas', 'Operaciones', 'Items vendidos']
 
 	useEffect(() => {
 		fetch('http://localhost:3000/api/checkout/salesTotal')
@@ -29,7 +29,7 @@ function TopSalesInfoBox(params) {
 			.then(response => response.json())
 			.then(data => {
 				setSalesQty(
-					//data.data.orders[0].numberSales
+					data.data.orders[0].numberSales
 				)
 			})
 
@@ -40,13 +40,13 @@ function TopSalesInfoBox(params) {
 			.then(response => response.json())
 			.then(data => {
 				setTotalItems(
-					//data.data.items[0].totalItems
+					data.data.items[0].totalItems
 				)
 			})
 
 	}, [])
 
-	const info = [totalSales, totalItems, SalesQty]
+	const info = [totalSales, SalesQty, totalItems]
 	return (
 		<>
 			<section className='infoBoxesContainer'>

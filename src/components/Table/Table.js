@@ -1,12 +1,14 @@
 import Row from '../Row/Row'
+import './style-sold-table.css'
 export default function Table({ columnName, tableInfo }) {
+
     return (
 
-        <table>
+        <table className='table-sold'>
             <tr>
                 {columnName.map(column => <th>{column}</th>)}
             </tr>
-            {tableInfo.map(info => <Row data={info} column={columnName} />)}
+            {tableInfo.map((info, index) => <Row key= {index} data={info} column={columnName} />)}
 
         </table>
 

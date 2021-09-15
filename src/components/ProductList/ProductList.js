@@ -14,28 +14,22 @@ function ProductList() {
   //Variables para el paginado
   const [limit, setLimit] = useState(10)
   const [page, setPage] = useState(1)
-  const [prevPage, setPrevPage] = useState(1)
-  const [nextPage, setNextPage] = useState(2)
   const [pageQuantity, setPageQuantity] = useState(null)
 
   useEffect(() => {
     getProducts(1, limit)
+    setPage(1)
   }, [limit])
 
   useEffect(() => {
     getProducts(page, limit)
   }, [page])
 
-
   function getProducts(page, limit) {
-
     fetch(`/api/products/page/${page}/limit/${limit}`)
       .then(result => result.json())
       .then(response => {
         setProducts(response.data)
-        page - 1 === 0 ? setPrevPage(1) : setPrevPage(page - 1)
-        page + 1 > response.meta.pageQuantity ? setNextPage(response.meta.pageQuantity) : setNextPage(page + 1)
-        page >= response.meta.pageQuantity ? setPage(response.meta.pageQuantity) : setPage(page)
         setPageQuantity(response.meta.pageQuantity)
       })
       .catch((err) => {
@@ -45,6 +39,20 @@ function ProductList() {
         setLoading(false);
       });
   }
+
+  //Las siguientes lineas arman el paginado
+  const goToNext = () => {
+    setPage((prevPage) => prevPage + 1)
+  }
+
+  const goBack = () => {
+    setPage((prevPage) => prevPage - 1)
+  }
+
+  const firstPage = page === 1 ? true : false
+  const lastPage = page >= pageQuantity ? true : false
+
+  //Fin del paginado
 
   function deleteProduct(id) {
     if (window.confirm(`Esta acción borrará el producto ${id}`)) {
@@ -135,21 +143,16 @@ function ProductList() {
                     <i className="far fa-edit"></i>
                   </Link>
                 </td>
-
                 <td className="center">
                   <button onClick={() => deleteProduct(element.id)} variant="danger" className="trash" type="submit"><i class="far fa-trash-alt"></i></button>
                 </td>
-
-
               </tr>
-
             )
           })
           }
         </tbody>
-
-
       </table>
+
       <caption>Productos por vista:
         <select className="limit" value={limit} onChange={event => setLimit(event.target.value)}>
           <option value="5"> 5</option>
@@ -160,13 +163,13 @@ function ProductList() {
       </caption>
 
       <div className="page">
-        <button onClick={() => setPage(prevPage)} className="offset">
+        <button onClick={goBack} disabled={firstPage} className="offset">
           <i className="fas fa-arrow-left"></i>
         </button>
         <button type="submit" className="offset white">
           {page}
         </button>
-        <button onClick={() => setPage(nextPage)} className="offset">
+        <button onClick={goToNext} disabled={lastPage} className="offset">
           <i className="fas fa-arrow-right"></i>
         </button>
       </div>

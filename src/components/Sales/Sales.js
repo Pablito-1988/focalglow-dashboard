@@ -1,4 +1,4 @@
-import InfoContainer from "./InfoContainer"
+import InfoContainer from './InfoContainer'
 
 function Sales() {
 

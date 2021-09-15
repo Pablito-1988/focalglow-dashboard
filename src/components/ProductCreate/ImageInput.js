@@ -1,8 +1,8 @@
-import {useState} from 'react'
-import imageDefault from'./default-img.JPG'
+/* import {useState} from 'react'
+import imageDefault from'./default-img.JPG' */
 
 function ImageInput(props) {
-        console.log(props)
+        
    /*  //seteo  un estado para alamacenar la imagen del imput
     const [image, setImage] = useState(imageDefault)
     //creo el evento que va a tener el input

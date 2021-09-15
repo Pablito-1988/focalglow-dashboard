@@ -129,7 +129,7 @@ h4{
     display: flex;
 }
 .powerInfo{
-        margin-left: 5px;
+    margin-left: 5px;
     border: 1px solid black;
     height: 30px;
     font-size: 17px;
@@ -145,6 +145,7 @@ h4{
 .powerWrapper:hover .powerInfo{
     display: block;
     border: 1px solid red;
+    box-shadow: 5px 5px 2px 2px black;
 }
 .finish{
     width: 50%;
@@ -194,6 +195,7 @@ h4{
     display: block;
     border: 1px solid red;
     font-size: 15px;
+    box-shadow: 5px 5px 2px 2px black;
 }
 
 

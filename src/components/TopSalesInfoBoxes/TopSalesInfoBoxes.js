@@ -19,7 +19,7 @@ function TopSalesInfoBox(params) {
 				console.log('hola')
 				console.log(data)
 				setTotalSales(
-					'$' + data.data.orders[0].totalSales
+					'$' + data.data.totalSales
 				)
 			})
 	}, [])
@@ -29,7 +29,7 @@ function TopSalesInfoBox(params) {
 			.then(response => response.json())
 			.then(data => {
 				setSalesQty(
-					data.data.orders[0].numberSales
+					data.data.numberSales
 				)
 			})
 
@@ -40,7 +40,7 @@ function TopSalesInfoBox(params) {
 			.then(response => response.json())
 			.then(data => {
 				setTotalItems(
-					data.data.items[0].totalItems
+					data.data.totalItems
 				)
 			})
 

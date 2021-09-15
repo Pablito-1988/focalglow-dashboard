@@ -1,8 +1,8 @@
 import './style-productCreate.css'
-import { useState, useEffect, useRef, /* useRef */ } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Formik, Form, ErrorMessage } from 'formik';
 import imageDefault from './default-img.JPG'
-
+//traigo todas las categorias desde la db para armar el formulario 
 function ProductCreate(params) {
    const [category, setCategory] = useState([])
    useEffect(() => {
@@ -15,7 +15,7 @@ function ProductCreate(params) {
             )
          })
    }, [])
-
+   //traigo todas las features para armar los checkbox y selects
    const [features, setfeatures] = useState([])
    useEffect(() => {
 
@@ -27,7 +27,7 @@ function ProductCreate(params) {
             )
          })
    }, [])
-
+   //separo los features por categoria para poder mapear
    let cct = []
    features.map(e => {
       return e.type === 'cct' ? cct.push(e) : '';
@@ -194,7 +194,7 @@ function ProductCreate(params) {
                
                onSubmit={(values ) => {
                   console.log(values)
-                  alert('falta la api por post, pero dentro de todo la info esta......')
+                  alert('falta la api por post, pero la info esta......'+ JSON.stringify(values) )
                   
                }}
 
@@ -209,7 +209,6 @@ function ProductCreate(params) {
                            <h2>Detalles y Features del producto</h2>
                            <label className='labelName'>Categoria</label>
                            <select name="categoryId" onChange={handleChange}>
-                                 <option>Seleccionar una categoria</option>
                               {category.map((e, index) => {
                                  return <option key={e.name + index} value={e.id}>{e.name}</option>
                               })}

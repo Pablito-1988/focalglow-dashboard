@@ -1,8 +1,10 @@
 .product-info-button{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 10px;
+    ;
 }
-.product-info-button button{
-    margin: 10px;
+
+.product-info-button article{
+    padding: 10px;
 }

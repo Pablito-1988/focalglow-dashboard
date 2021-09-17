@@ -8,18 +8,12 @@ function Error404(params) {
             target="_blank">
             <header class="top-header">
             </header>
-
-            
             <div>
                 <div class="starsec"></div>
                 <div class="starthird"></div>
                 <div class="starfourth"></div>
                 <div class="starfifth"></div>
             </div>
-            
-
-
-
             <div class="lamp__wrap">
                 <div class="lamp">
                     <div class="cable"></div>
@@ -30,9 +24,7 @@ function Error404(params) {
                     <div class="light"></div>
                 </div>
             </div>
-            
             <section class="error">
-               
                 <div class="error__content">
                     <div class="error__message message">
                         <h1 class="message__title">Page Not Found</h1>
@@ -43,20 +35,8 @@ function Error404(params) {
                             target="_blanck" class="e-nav__link"> </a>
                     </div>
                 </div>
-               
-
             </section>
-
         </a>
-
-         /*  <div className='wrapper'>
-            <h1 className='errorTitle'>ERROR 404!!!!!</h1>
-            <img  className='errorImg'src={Imagen} alt='error-404'></img>
-            <h4>Que susto no... no pasa nada</h4>
-            <h5 className='buttonToHome'><a className='buttonContent' href='/'>Clickea acá para volver a la HOME</a></h5>
-
-        </div>  */
-        
     )
 }
 export default Error404

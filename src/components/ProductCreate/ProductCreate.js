@@ -105,7 +105,7 @@ function ProductCreate(params) {
    }
    function gonza(e) {
       e.preventDefault()
-      alert('No Gonza! Acá no hay que tocar, esto borra todo')
+      alert('No Gonza! Acá no hay que tocar, esto borra todo jajajajaja')
    }
    return (
       <>

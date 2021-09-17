@@ -1,5 +1,6 @@
 
 import './style-404.css'
+/* import Imagen from  './error-404.jpg' */
 
 function Error404(params) {
     return (
@@ -31,22 +32,31 @@ function Error404(params) {
             </div>
             
             <section class="error">
-                
+               
                 <div class="error__content">
                     <div class="error__message message">
                         <h1 class="message__title">Page Not Found</h1>
                         <p class="message__text">Lo lamentamos, pero me parece que por acá no es jajajaja</p>
                     </div>
                     <div class="error__nav e-nav">
-                        <a href="/"target="_blanck" class="e-nav__link"> </a>
-                            
+                        <a href="/"
+                            target="_blanck" class="e-nav__link"> </a>
                     </div>
                 </div>
-                
+               
 
             </section>
 
         </a>
+
+         /*  <div className='wrapper'>
+            <h1 className='errorTitle'>ERROR 404!!!!!</h1>
+            <img  className='errorImg'src={Imagen} alt='error-404'></img>
+            <h4>Que susto no... no pasa nada</h4>
+            <h5 className='buttonToHome'><a className='buttonContent' href='/'>Clickea acá para volver a la HOME</a></h5>
+
+        </div>  */
+        
     )
 }
 export default Error404
